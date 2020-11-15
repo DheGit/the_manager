@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/colorDistinct">
+
+    <LinearLayout
+        android:id="@+id/ll_user_details_name"
+        android:background="@color/colorWhite"
+        android:elevation="@dimen/space_small"
+        android:padding="@dimen/space_big"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="@string/master_username_static"
+            android:textSize="@dimen/text_size_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_user_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_normal"
+            android:text="@string/sample_text_short"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_user_details_pass"
+        android:layout_marginTop="@dimen/space_normal"
+        android:background="@color/colorWhite"
+        android:elevation="@dimen/space_small"
+        android:layout_below="@id/ll_user_details_name"
+        android:padding="@dimen/space_big"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="@string/master_password_static"
+            android:textSize="@dimen/text_size_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_user_details_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_normal"
+            android:text="@string/sample_text_short"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_user_details_revoke"
+        android:layout_marginTop="@dimen/space_normal"
+        android:background="?android:attr/selectableItemBackground"
+        android:elevation="@dimen/space_small"
+        android:visibility="gone"
+        android:layout_below="@id/ll_user_details_pass"
+        android:padding="@dimen/space_big"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_user_revoke_access"
+            android:text="@string/sample_text_short"
+            android:textSize="@dimen/text_size_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_user_details_conv_list"
+        android:layout_marginTop="@dimen/space_normal"
+        android:background="@color/colorWhite"
+        android:elevation="@dimen/space_small"
+        android:layout_below="@id/ll_user_details_revoke"
+        android:paddingTop="@dimen/space_big"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_user_details_static_conv_header"
+            android:text="@string/sample_text"
+            android:textSize="@dimen/text_size_3"
+            android:paddingLeft="@dimen/space_big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_user_details_conv_list"
+            android:paddingTop="@dimen/space_big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/login_screen">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/login_box"
+            android:layout_marginStart="@dimen/space_huge"
+            android:layout_marginLeft="@dimen/space_huge"
+            android:layout_marginEnd="@dimen/space_huge"
+            android:layout_marginRight="@dimen/space_huge"
+            android:gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_razgo_entry_header"
+                android:layout_marginTop="@dimen/space_gigantic"
+                android:textSize="@dimen/text_size_7"
+                android:gravity="center"
+                android:text="@string/razgo_enter_greet"
+                android:fontFamily="cursive"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_below="@id/tv_razgo_entry_header"
+                android:hint="@string/hint_username"
+                android:layout_marginTop="@dimen/space_phenomenal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_below="@id/et_username"
+                android:layout_marginTop="@dimen/space_gigantic"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_error_creds"
+                android:layout_below="@id/et_password"
+                android:layout_marginTop="@dimen/space_small"
+                android:textColor="@color/colorWarn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_submit_creds"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/et_password"
+                android:layout_marginTop="@dimen/space_huge"
+                android:text="@string/submit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+    <include
+        layout="@layout/layout_progress"/>
+</RelativeLayout>

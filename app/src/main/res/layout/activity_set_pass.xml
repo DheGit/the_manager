@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.view.activity.auth.SetPassActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_set_pass"
+        android:background="@color/colorTaskTb"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:elevation="@dimen/space_small"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/space_bigger"
+        android:padding="@dimen/space_big"
+        android:layout_below="@id/tb_set_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_new_pin1"
+            android:hint="@string/enter_new_pin_hint"
+            android:inputType="numberPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/et_new_pin2"
+            android:hint="@string/confirm_pin_hint"
+            android:layout_below="@id/et_new_pin1"
+            android:layout_marginTop="@dimen/space_bigger"
+            android:inputType="numberPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_error_pin_mismatch"
+            android:layout_below="@id/et_new_pin2"
+            android:layout_marginTop="@dimen/space_medium"
+            android:text="@string/error_mismatch_pin"
+            android:textColor="@color/colorWarn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

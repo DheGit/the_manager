@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_task_name"
+        android:layout_marginTop="@dimen/space_gigantic"
+        android:layout_marginStart="@dimen/space_gigantic"
+        android:layout_marginLeft="@dimen/space_gigantic"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_size_6"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_note_static"
+        android:text="@string/note_text_caps"
+        android:layout_marginTop="@dimen/space_medium"
+        android:layout_below="@id/tv_task_name"
+        android:layout_marginStart="@dimen/space_huge"
+        android:layout_marginLeft="@dimen/space_huge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_task_note"
+        android:layout_below="@id/tv_note_static"
+        android:layout_marginStart="@dimen/space_huge"
+        android:layout_marginLeft="@dimen/space_huge"
+        android:layout_marginRight="@dimen/space_huge"
+        android:layout_marginEnd="@dimen/space_huge"
+        android:textColor="@color/colorBlack"
+        android:text="@string/sample_text_long"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/tv_duedate_static"
+        android:text="@string/duedate_text_caps"
+        android:layout_marginTop="@dimen/space_medium"
+        android:layout_below="@id/tv_task_note"
+        android:layout_marginStart="@dimen/space_huge"
+        android:layout_marginLeft="@dimen/space_huge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_task_due"
+        android:layout_below="@id/tv_duedate_static"
+        android:layout_marginStart="@dimen/space_huge"
+        android:layout_marginLeft="@dimen/space_huge"
+        android:layout_marginRight="@dimen/space_huge"
+        android:layout_marginEnd="@dimen/space_huge"
+        android:textColor="@color/colorBlack"
+        android:text="@string/sample_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/layout_progress"/>
+
+</RelativeLayout>

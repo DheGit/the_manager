@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">TheManager</string>
+
+    <!--General Screens-->
+    <string name="task_manager">Task Manager</string>
+    <string name="log_manager">Logger</string>
+    <string name="settings_text">Settings</string>
+
+
+    <string name="authenticate_text">Authenticate</string>
+    <string name="verify_you_prompt">To continue, verify it\'s really you:</string>
+    <string name="enter_pin_hint">Enter the PIN</string>
+
+
+    <string name="set_pin_title">Set a PIN</string>
+    <string name="enter_new_pin_hint">Enter the new PIN</string>
+    <string name="confirm_pin_hint">Enter the new PIN again</string>
+    <string name="error_mismatch_pin">The entered PINs don\'t match</string>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="about_text">About</string>
+    <string name="about_content">TheManager is currently under construction and tests by The Creator. The app installed right now is the beta version.</string>
+    <string name="easter_title">Easter Egg</string>
+    <string name="enter_text_hint">Enter the text</string>
+
+    <!--Task Screens-->
+    <string name="quad_1_descr">Urgent &amp; Important</string>
+    <string name="quad_2_descr">Not Urgent &amp; Important</string>
+    <string name="quad_3_descr">Urgent &amp; Not Important</string>
+    <string name="quad_4_descr">Not Urgent &amp; Not Important</string>
+    <string name="tasks_text">tasks left</string>
+
+
+    <string name="no_task_message">You got no tasks. Enjoy :)</string>
+    <string name="delete_tasks_action">Delete Tasks</string>
+    <string name="delete_tasks_message">Do you really want to delete the selected Tasks?</string>
+
+
+    <string name="hint_task_name">Task name</string>
+    <string name="error_no_task_name">A title is required</string>
+    <string name="hint_task_note">Note</string>
+    <string name="hint_due_date">Due date</string>
+    <string name="discard_task_message">Discard the changes?</string>
+    <string name="discard_text">Discard</string>
+    <string name="save_text">Save</string>
+
+
+    <string name="note_text_caps">NOTE</string>
+    <string name="duedate_text_caps">DUE DATE</string>
+    <string name="edit_task_prompt">Edit this task</string>
+
+    <!--Razgo Screens-->
+    <string name="razgo_enter_greet">The Land Of Razgos</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="error_bad_internet">No Internet Connection</string>
+    <string name="error_bad_username">The entered username does not exist</string>
+
+
+    <string name="new_conv_title">New Conversation</string>
+    <string name="new_conv_message">Who do you want to talk with?</string>
+    <string name="log_out_message">Do you really want to Log Out?</string>
+    <string name="log_out_action">Log Out</string>
+
+
+    <string name="enter_message_hint">Type a message…</string>
+
+
+    <!--The Logger Screens-->
+    <string name="logger_coming_soon">The Logger will be coming soon…</string>
+
+
+    <!--Sample strings used for development purposes only-->
+    <string name="sample_number">247891132789</string>
+    <string name="sample_text">Lorem ipsum dolor sit amet, consectetur adipiscing</string>
+    <string name="sample_text_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam maximus nec sapien vitae pharetra. Pellentesque volutpat auctor elit, ac hendrerit leo. Donec in augue ut ligula hendrerit tempus id in ligula. Mauris facilisis dui a magna varius commodo. In hac habitasse platea dictumst. Donec libero est, scelerisque eget consectetur id, eleifend vel justo. Cras fermentum diam sit amet purus ultricies lacinia. Integer vitae tincidunt leo. Vestibulum iaculis posuere purus sit amet porttitor. Vivamus rhoncus dapibus vehicula. Cras placerat diam nec ex viverra convallis. Quisque tempor dignissim convallis. Etiam eget viverra nisl, sit amet dapibus mauris. Aenean gravida et erat ac rhoncus. Fusce dictum tellus vitae nibh faucibus lacinia</string>
+    <string name="sample_text_short">Lorem ipsum</string>
+
+    <!--Strings used all around the app-->
+    <string name="error_wrong_creds">The entered credentials are incorrect</string>
+    <string name="retry_message">Some error just happened. Would you like to retry?</string>
+    <string name="retry_text">Retry</string>
+
+    <!--All the common strings-->
+    <string name="next_text">Next</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="yes_text">Yes</string>
+    <string name="no_text">No</string>
+    <string name="ok_text">OK</string>
+    <string name="submit_text">Submit</string>
+
+    <!--MasterScreen-->
+    <string name="get_users_action">Get Users</string>
+    <string name="add_user_action">Add a new user</string>
+
+    <string name="master_revoke_access_command">Revoke user access</string>
+    <string name="master_username_static">Username:</string>
+    <string name="master_password_static">Password:</string>
+    <string name="clean_conversation_message">Do you want to clean this conversation?</string>
+    <string name="clean_conversation_title">Clean Conversation</string>
+    <string name="toast_clean_in_progress">Cleaning the selected conversation…</string>
+
+    <string name="clean_conv_channel_id">TM_cloudcleaning</string>
+    <string name="clean_conv_channel_name">Cloud Cleaning</string>
+    <string name="clean_conv_channel_descr">Allows for the background cleaning of the cloud storage space of the app.</string>
+
+</resources>

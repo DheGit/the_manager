@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:paddingTop="@dimen/space_normal">
+
+    <TextView
+        android:id="@+id/tv_date_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/date_shower_shape"
+        android:text="15 DECEMBER 2017"
+        android:paddingTop="@dimen/space_small"
+        android:paddingBottom="@dimen/space_small"
+        android:paddingEnd="@dimen/space_normal"
+        android:paddingStart="@dimen/space_normal" />
+
+    <RelativeLayout
+        android:id="@+id/rl_razgo_main_container"
+        android:gravity="start"
+        android:paddingTop="@dimen/space_normal"
+        android:layout_below="@id/tv_date_bubble"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rl_razgo_sub_container"
+            android:layout_marginStart="@dimen/space_medium"
+            android:layout_marginLeft="@dimen/space_medium"
+            android:layout_marginRight="@dimen/space_medium"
+            android:layout_marginEnd="@dimen/space_medium"
+            android:background="@drawable/razgo_shape_other"
+            android:padding="@dimen/space_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_razgo_sender"
+                android:text="@string/sample_text_short"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_razgo_content"
+                android:layout_below="@id/tv_razgo_sender"
+                android:maxWidth="@dimen/razgo_maxwidth"
+                android:minWidth="@dimen/razgo_minwidth"
+                android:text="Hi"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_razgo_time"
+                android:text="12:04p.m"
+                android:layout_toLeftOf="@id/iv_razgo_status_sent"
+                android:layout_toStartOf="@id/iv_razgo_status_sent"
+                android:layout_below="@id/tv_razgo_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/iv_razgo_status_sent"
+                android:layout_width="@dimen/text_size_2"
+                android:layout_height="@dimen/text_size_2"
+                android:src="@drawable/ic_done_gray_24dp"
+                android:layout_alignBottom="@id/tv_razgo_time"
+                android:layout_below="@id/tv_razgo_content"
+                android:layout_alignRight="@id/tv_razgo_content"
+                android:layout_alignEnd="@id/tv_razgo_content"/>
+            <ImageView
+                android:id="@+id/iv_razgo_status_unsent"
+                android:layout_width="@dimen/text_size_2"
+                android:layout_height="@dimen/text_size_2"
+                android:src="@drawable/ic_waiting_gray_24dp"
+                android:layout_alignBottom="@id/tv_razgo_time"
+                android:layout_below="@id/tv_razgo_content"
+                android:layout_alignRight="@id/tv_razgo_content"
+                android:layout_alignEnd="@id/tv_razgo_content"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

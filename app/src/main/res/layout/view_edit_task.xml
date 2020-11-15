@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:padding="@dimen/space_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_task_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="false"
+            android:layout_marginStart="@dimen/space_gigantic"
+            android:layout_marginLeft="@dimen/space_gigantic"
+            android:layout_marginTop="@dimen/space_gigantic"
+            android:hint="@string/hint_task_name"
+            android:inputType="textAutoCorrect" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_no_task_name_error"
+            android:textColor="@color/colorWarn"
+            android:text="@string/error_no_task_name"
+            android:layout_marginTop="@dimen/space_small"
+            android:layout_marginStart="@dimen/space_gigantic"
+            android:layout_below="@id/et_task_name"
+            android:layout_marginLeft="@dimen/space_gigantic" />
+
+        <EditText
+            android:id="@+id/et_task_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_no_task_name_error"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/space_gigantic"
+            android:layout_marginLeft="@dimen/space_gigantic"
+            android:layout_marginTop="@dimen/space_gigantic"
+            android:hint="@string/hint_task_note"
+            android:minLines="2"
+            android:maxLines="10"
+            android:scrollbars="vertical"
+            android:inputType="textAutoCorrect|textMultiLine" />
+
+        <EditText
+            android:id="@+id/et_task_due"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_task_note"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/space_gigantic"
+            android:layout_marginLeft="@dimen/space_gigantic"
+            android:layout_marginTop="@dimen/space_gigantic"
+            android:layout_marginBottom="@dimen/space_gigantic"
+            android:hint="@string/hint_due_date" />
+    </RelativeLayout>
+
+</ScrollView>

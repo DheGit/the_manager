@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_set_pin"
+        android:padding="@dimen/space_big"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_set_pin"
+            android:src="@drawable/ic_security_black_24dp"
+            android:layout_width="@dimen/space_huge"
+            android:layout_height="@dimen/space_huge" />
+
+        <TextView
+            android:layout_toRightOf="@id/iv_set_pin"
+            android:layout_toEndOf="@id/iv_set_pin"
+            android:textSize="@dimen/text_size_4"
+            android:textColor="@color/colorBlack"
+            android:text="@string/set_pin_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_about_box"
+        android:layout_below="@id/rl_set_pin"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="@dimen/space_big"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_about_icon"
+            android:src="@drawable/ic_info_outline_black_24dp"
+            android:layout_width="@dimen/space_huge"
+            android:layout_height="@dimen/space_huge"
+            android:contentDescription="@string/about_text" />
+
+        <TextView
+            android:id="@+id/tv_about_head"
+            android:layout_toEndOf="@id/iv_about_icon"
+            android:layout_toRightOf="@id/iv_about_icon"
+            android:text="@string/about_text"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_size_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@id/tv_about_head"
+            android:text="@string/about_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

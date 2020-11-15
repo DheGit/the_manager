@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginRight="@dimen/space_medium"
+    android:layout_marginEnd="@dimen/space_medium"
+    android:layout_marginStart="@dimen/space_medium"
+    android:layout_marginLeft="@dimen/space_medium"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/et_easter_text"
+        android:inputType="textAutoCorrect"
+        android:hint="@string/enter_text_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

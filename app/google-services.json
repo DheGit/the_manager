@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1094538348353",
+    "firebase_url": "https://themanager-590e9.firebaseio.com",
+    "project_id": "themanager-590e9",
+    "storage_bucket": "themanager-590e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094538348353:android:bf39ac16ee5e41b1",
+        "android_client_info": {
+          "package_name": "com.infinitydheer.themanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094538348353-ocpd9glvefm1lul5r7m63sci4bqjr7v7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.infinitydheer.themanager",
+            "certificate_hash": "b1a66261507aea8deeb4e6b3134d24fd4a437aec"
+          }
+        },
+        {
+          "client_id": "1094538348353-42lvgkjnf7rfqbluhalitprhvlhqefvu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsmrH16PgN9hFhHcDJAle83u9BpAggKRE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094538348353-42lvgkjnf7rfqbluhalitprhvlhqefvu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
