@@ -31,7 +31,7 @@ public class NotificationUtils {
 
         String channelId="";
 
-        Notification.Builder builder = new Notification.Builder(c);//FIXME This is deprecated
+        Notification.Builder builder = new Notification.Builder(c);
         builder.setContentTitle(title)
                 .setContentText(text)
                 .setSmallIcon(smallIcon)
@@ -48,7 +48,7 @@ public class NotificationUtils {
         Context c = mContext.get();
         if (c == null) return;
 
-        Notification.Builder builder = null;//FIXME This is deprecated
+        Notification.Builder builder = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             builder = new Notification.Builder(c, channelId);
         }else{

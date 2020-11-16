@@ -6,7 +6,7 @@ import com.infinitydheer.themanager.domain.listener.ChangeListener;
 import com.infinitydheer.themanager.domain.repository.RazgoRepository;
 
 public class UCSync extends BasicUseCase {
-    private RazgoRepository repository;
+    private final RazgoRepository repository;
     public UCSync(RazgoRepository razgoRepository,ChangeListener<ConvDomain> conversationListener){
         this.repository=razgoRepository;
     }

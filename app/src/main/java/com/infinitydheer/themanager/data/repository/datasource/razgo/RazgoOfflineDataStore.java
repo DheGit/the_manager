@@ -320,7 +320,6 @@ public class RazgoOfflineDataStore {
     }
 
     //Utility methods to make ContentValues
-    //TODO Consider moving them to a new class, static
     private ContentValues createRazgoOneCV(long id, String date, String sender, String content, long k){
         ContentValues cv=new ContentValues();
 

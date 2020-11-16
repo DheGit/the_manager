@@ -88,7 +88,6 @@ public class TaskOverviewFragment extends BaseFragment implements TaskOverviewVi
         mLabel3 =activity.findViewById(R.id.tv_quadrant_3_num);
         mLabel4 =activity.findViewById(R.id.tv_quadrant_4_num);
 
-        //TODO Improve this mess
         mQuadrant1.setOnClickListener(view -> {
             Intent intent = new Intent(TaskOverviewFragment.this.getActivity(), TaskListActivity.class);
             intent.putExtra(S.Constants.INTENT_QUAD_KEY, 1);

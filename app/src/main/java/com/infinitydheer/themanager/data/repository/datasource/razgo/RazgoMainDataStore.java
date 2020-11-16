@@ -36,11 +36,11 @@ public class RazgoMainDataStore implements RazgoOnlineDataStore.OnlineMainListen
     private ChangeListener<RazgoDomain> mRazgoChangeListener;
     private RazgoListener mMainChangeListener;
 
-    private ConvEntityDataMapper mConvDataMapper;
-    private RazgoEntityDataMapper mRazgoDataMapper;
+    private final ConvEntityDataMapper mConvDataMapper;
+    private final RazgoEntityDataMapper mRazgoDataMapper;
 
-    private RazgoOnlineDataStore mOnlineDataStore;
-    private RazgoOfflineDataStore mOfflineDataStore;
+    private final RazgoOnlineDataStore mOnlineDataStore;
+    private final RazgoOfflineDataStore mOfflineDataStore;
 
     private NotificationUtils mNotificationUtils;//This feels bad coz data should not know about presentation
 

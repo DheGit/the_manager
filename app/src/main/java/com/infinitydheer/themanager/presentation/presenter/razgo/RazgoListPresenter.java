@@ -77,7 +77,7 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
         if (usefulRazgo.getSender().equals(mPartnerName) ||
                 usefulRazgo.getSender().equals(ApplicationGlobals.SELF_ID_UP)){
             this.mView.addRazgo(usefulRazgo, self);
-        }//TODO Gotta test this
+        }
     }
 
     public void loadData(List<RazgoDomain> domainList) {
@@ -114,7 +114,7 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
 
     @Override
     public void onRazgoReadByPartner(long razgoId) {
-        //TODO: Just remove this if seems impossible
+        //TODO: The double tick thingy
     }
 
     public class RazgoListCl implements ChangeListener<RazgoDomain> {

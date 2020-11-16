@@ -359,7 +359,7 @@ public class RazgoOnlineDataStore {
 
         }).addOnFailureListener(e -> {});
     }
-    public void syncGet1New(List<Long> convIds, boolean callPutNew, CollectionReference metaRef){//FIXME This is a highly flawed code, doesn't do what it is supposed to
+    public void syncGet1New(List<Long> convIds, boolean callPutNew, CollectionReference metaRef){
         String tselfId=ApplicationGlobals.SELF_ID;
         if(tselfId.equals("")) tselfId= mMainDataStore.getUserId();
         if(tselfId.equals("")){
@@ -496,7 +496,6 @@ public class RazgoOnlineDataStore {
     }
 
     //Utitlity and helper methods in the class
-    //TODO Consider moving these methods to a new, static class
     public static Map<String,Object> getDocumentSurvival(){
         Map<String, Object> survival=new HashMap<>();
         survival.put(K_SUPPORT,true);
@@ -511,7 +510,7 @@ public class RazgoOnlineDataStore {
 
         return newConv;
     }
-
+    //TODO Consider moving these methods to Entity classes
     private Map<String,Object> mapEntityToMap(RazgoEntity entity){
         Map<String,Object> data=new HashMap<>();
 
