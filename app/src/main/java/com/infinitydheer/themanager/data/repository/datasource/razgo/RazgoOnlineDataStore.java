@@ -182,7 +182,7 @@ public class RazgoOnlineDataStore {
                     convEntity.setLastMsg(lastEntity.getContent());
                     convEntity.setK(lastEntity.getK());
 
-                    RazgoOnlineDataStore.this.mMainDataStore.onConvReceived(convEntity);
+                    RazgoOnlineDataStore.this.mMainDataStore.onConvReceived(convEntity,true);
                     RazgoOnlineDataStore.this.mMainDataStore.addRazgosToMain(razgoList,convid);
 
                     selfUpdateCollection.document(""+convid).delete();
@@ -432,7 +432,8 @@ public class RazgoOnlineDataStore {
                         }
 
                         RazgoOnlineDataStore.this.mMainDataStore.addRazgosToMain(entities, convid);
-                        RazgoOnlineDataStore.this.mMainDataStore.onConvReceived(convEntity);
+//                        RazgoOnlineDataStore.this.mMainDataStore.onConvReceived(convEntity);
+                        RazgoOnlineDataStore.this.mMainDataStore.onConvReceived(convEntity,convid==convIds.get(convIds.size()-1));
 
                         metaRef.document(""+convid).delete();
                         if(callPutNew) RazgoOnlineDataStore.this.syncPut();
@@ -555,6 +556,7 @@ public class RazgoOnlineDataStore {
         void addRazgosToMain(List<RazgoEntity> razgoEntities, long convid);
 
         void onConvReceived(ConvEntity convEntity);
+        void onConvReceived(ConvEntity convEntity, boolean completed); //TODO: Consider keeping this as the only method(make the boolean parameter mandatory)
         void onRazgoReceived(RazgoEntity razgoEntity);
         void onRazgosSent(List<Long> oldIds, List<Long> newIds);
 
