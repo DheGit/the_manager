@@ -18,6 +18,7 @@ import com.infinitydheer.themanager.presentation.utils.NotificationUtils;
 import com.infinitydheer.themanager.presentation.view.activity.MainActivity;
 
 public class NetworkChangedReceiver extends BroadcastReceiver {
+    //TODO: Don't use this, use WorkManager instead
     @Override
     public void onReceive(Context context, Intent intent) {
         //FIXME Add a filter of IFs to check if the intent received is a good one

@@ -47,7 +47,10 @@
 
         <service android:name=".data.service.CleanConversationService"/>
 
-        <activity android:name=".presentation.view.activity.master.MasterActivity" />
+        <activity android:name=".presentation.view.activity.master.MasterActivity"
+            android:autoRemoveFromRecents="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true" />
         <activity android:name=".presentation.view.activity.master.UserListActivity" />
         <activity android:name=".presentation.view.activity.master.UserDetailsActivity" />
     </application>
