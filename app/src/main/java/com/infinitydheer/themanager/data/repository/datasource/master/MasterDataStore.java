@@ -248,7 +248,7 @@ public class MasterDataStore implements MasterStore {
                         try {
                             final long curId = result.getLong(K_LATID) - 100;
 
-                            cleanRazgo(convId,curId,500,0,then,curId);
+                            cleanRazgo(convId,500,then,curId);
                         } catch (NullPointerException e) {
                             e.printStackTrace();
                         }
@@ -301,5 +301,48 @@ public class MasterDataStore implements MasterStore {
                 cleanRazgo(convId, nextId, left - 1, fails + 1, then, endid);
             }
         });
+    }
+
+    /**
+     * A method to clean a single conversation collection
+      * @param convId The conversation ID
+     * @param howmany The number of razgos to be cleaned
+     * @param then The callback to let the caller function know what happened, ie, success, failure, completion
+     * @param endid The ID of the latest razgo allowed to be cleaned (won't clean any razgos with an ID greater than this)
+     */
+    private void cleanRazgo(long convId, long howmany, ChangeListener<Void> then, final long endid){
+        CollectionReference targetCollection = mOnlineDb.collection(COLL_CONV).document(""+convId).collection(COLL_SYNCED);
+        targetCollection.whereLessThan(K_ID,endid)
+                .limit(howmany)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isComplete()){
+                            if(task.isSuccessful()){
+                                QuerySnapshot querySnapshot = task.getResult();
+                                if (querySnapshot != null) {
+                                    WriteBatch batch = mOnlineDb.batch();
+                                    for(DocumentSnapshot documentSnapshot : querySnapshot){
+                                        String razgoId = documentSnapshot.getId();
+                                        batch.delete(targetCollection.document(razgoId));
+                                    }
+                                    //TODO: Test this code.
+                                    batch.commit()
+                                            .addOnSuccessListener(aVoid -> {
+                                                then.onComplete();
+                                                Log.d("TheManagerLog", "Done cleaning razgos");
+                                            })
+                                            .addOnFailureListener(then::onError);
+                                }else{
+                                    then.onError(task.getException());
+                                }
+                            }else{
+                                then.onError(task.getException());
+                            }
+                        }else{
+                            then.onError(task.getException());
+                        }
+                }});
     }
 }

@@ -32,6 +32,8 @@ public class RazgoOnlineDataStore {
     private ListenerRegistration mUpdateListener;
     private OnlineMainListener mMainDataStore;
 
+    //TODO: Add cache support to reduce the number of reads as well
+
     private RazgoOnlineDataStore(OnlineMainListener liste){
         mOnlineDb =FirebaseFirestore.getInstance();
         this.mMainDataStore =liste;
