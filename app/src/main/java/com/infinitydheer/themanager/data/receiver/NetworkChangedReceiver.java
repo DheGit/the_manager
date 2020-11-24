@@ -14,33 +14,47 @@ import com.infinitydheer.themanager.data.repository.RazgoDataRepository;
 import com.infinitydheer.themanager.domain.constants.S;
 import com.infinitydheer.themanager.domain.data.ConvDomain;
 import com.infinitydheer.themanager.domain.listener.ChangeListener;
+import com.infinitydheer.themanager.presentation.services.SyncService;
 import com.infinitydheer.themanager.presentation.utils.NotificationUtils;
 import com.infinitydheer.themanager.presentation.view.activity.MainActivity;
 
 public class NetworkChangedReceiver extends BroadcastReceiver {
     //TODO: Don't use this, use WorkManager instead
+//    @Override
+//    public void onReceive(Context context, Intent intent) {
+//        //FIXME Add a filter of IFs to check if the intent received is a good one
+//        ConnectivityManager cm=(ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+//        if(cm==null) return;
+//        if(cm.getActiveNetworkInfo()!=null&&
+//                cm.getActiveNetworkInfo().isConnectedOrConnecting()){
+//            RazgoDataRepository dataRepository=RazgoDataRepository.getInstance(context);
+//            dataRepository.setConversationListener(new ChangeListener<ConvDomain>() {
+//                @Override
+//                public void onNext(ConvDomain result) {
+//                    notifyUser(context);
+//                }
+//                @Override
+//                public void onComplete() {}
+//                @Override
+//                public void onError(Exception e) {
+//                    Log.e("TheManagerLog","Error while NetworkChangedReceiver synced the razgos: "+e.getMessage());
+//                }
+//            });
+//            dataRepository.sync();
+//            //FIXME Start a service here instead. //Probably done now.
+//        }
+//    }
+
+
     @Override
     public void onReceive(Context context, Intent intent) {
-        //FIXME Add a filter of IFs to check if the intent received is a good one
         ConnectivityManager cm=(ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        //FIXME Make an intent filter here
         if(cm==null) return;
         if(cm.getActiveNetworkInfo()!=null&&
                 cm.getActiveNetworkInfo().isConnectedOrConnecting()){
-            RazgoDataRepository dataRepository=RazgoDataRepository.getInstance(context);
-            dataRepository.setConversationListener(new ChangeListener<ConvDomain>() {
-                @Override
-                public void onNext(ConvDomain result) {
-                    notifyUser(context);
-                }
-                @Override
-                public void onComplete() {}
-                @Override
-                public void onError(Exception e) {
-                    Log.e("TheManagerLog","Error while NetworkChangedReceiver synced the razgos: "+e.getMessage());
-                }
-            });
-            dataRepository.sync();
-            //FIXME Start a service here instead
+            context.startService(new Intent(context, SyncService.class));
+            Log.d("TheManagerLog","NetworkChangedReceiver starting the SyncService now.");
         }
     }
 
