@@ -9,6 +9,7 @@ public class UCSync extends BasicUseCase {
     private final RazgoRepository repository;
     public UCSync(RazgoRepository razgoRepository,ChangeListener<ConvDomain> conversationListener){
         this.repository=razgoRepository;
+        this.repository.setConversationListener(conversationListener);
     }
 
     public void sync(){

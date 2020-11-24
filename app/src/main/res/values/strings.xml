@@ -105,4 +105,10 @@
     <string name="clean_conv_channel_name">Cloud Cleaning</string>
     <string name="clean_conv_channel_descr">Allows for the background cleaning of the cloud storage space of the app.</string>
 
+    <string name="sync_channel_id">TM_cloudsync</string>
+    <string name="sync_channel_name">Cloud Syncing</string>
+    <string name="sync_channel_descr">Allows for the background syncing of the cloud storage space of the app.</string>
+    <string name="sync_foreground_name">Syncing Cloud Tasks</string>
+    <string name="sync_foreground_descr">Getting offline tasks in sync with the cloud</string>
+
 </resources>
