@@ -46,6 +46,7 @@
         </receiver>
 
         <service android:name=".data.service.CleanConversationService"/>
+        <service android:name=".presentation.services.SyncService"/>
 
         <activity android:name=".presentation.view.activity.master.MasterActivity"
             android:autoRemoveFromRecents="true"

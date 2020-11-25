@@ -357,9 +357,16 @@ public class RazgoOnlineDataStore {
 
                 updateList.add(longId);
             }
-            if(updateList.size()!=0) syncGet1New(updateList, callPutNew, updatesRef);
+            if(updateList.size()!=0){
+                syncGet1New(updateList, callPutNew, updatesRef);
+            }else{
+                RazgoOnlineDataStore.this.mMainDataStore.onSyncDone();
+            }
 
-        }).addOnFailureListener(e -> {});
+        }).addOnFailureListener(e -> {
+            e.printStackTrace();
+            RazgoOnlineDataStore.this.mMainDataStore.onSyncDone();
+        });
     }
     public void syncGet1New(List<Long> convIds, boolean callPutNew, CollectionReference metaRef){
         String tselfId=ApplicationGlobals.SELF_ID;
@@ -441,6 +448,8 @@ public class RazgoOnlineDataStore {
                         if(callPutNew) RazgoOnlineDataStore.this.syncPut();
                     });
         }
+
+        if(convIds.size()==0) mMainDataStore.onSyncDone();
     }
 
     public void syncPut(){
@@ -560,6 +569,7 @@ public class RazgoOnlineDataStore {
         void onConvReceived(ConvEntity convEntity, boolean completed); //TODO: Consider keeping this as the only method(make the boolean parameter mandatory)
         void onRazgoReceived(RazgoEntity razgoEntity);
         void onRazgosSent(List<Long> oldIds, List<Long> newIds);
+        void onSyncDone();
 
         void markUpdates(List<RazgoEntity> entities, long convid);
 

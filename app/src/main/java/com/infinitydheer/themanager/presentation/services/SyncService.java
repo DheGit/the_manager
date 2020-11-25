@@ -32,7 +32,6 @@ public class SyncService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d("TheManagerLog","SyncService created.");
     }
 
     @Override
@@ -49,7 +48,6 @@ public class SyncService extends Service {
 
         startForeground(FOREGROUND_NOTIF_ID,notificationBuilder.build());
 
-        Log.d("TheManagerLog","SyncService received the onStartCommand");
         ChangeListener<ConvDomain> changeListener = new ChangeListener<ConvDomain>() {
             @Override
             public void onNext(ConvDomain result) {
@@ -58,7 +56,7 @@ public class SyncService extends Service {
 
             @Override
             public void onComplete() {
-                notifyUser();
+//                notifyUser();
                 Log.d("TheManagerLog","SyncService successfully completed the sync tasks, now stopping self.");
                 stopForeground(true);
                 stopSelfResult(startId);
@@ -81,8 +79,6 @@ public class SyncService extends Service {
     }
 
     private void notifyUser(){
-        Log.d("TheManagerLog","SyncService notifying user now");
-
         String channelId = getString(R.string.clean_conv_channel_id);
 
         NotificationUtils notificationUtils = NotificationUtils.getInstance(this);

@@ -95,15 +95,22 @@ public class RazgoMainDataStore implements RazgoOnlineDataStore.OnlineMainListen
     }
     @Override
     public void onConvReceived(ConvEntity convEntity, boolean completed) {
-        if(convEntity==null) return;
+        if(this.mConvChangeListener ==null) return;
+        if(convEntity==null){
+            if(completed) onSyncDone();
+            return;
+        }
 
 //        notifyUser();
 
-        if(this.mConvChangeListener ==null) return;
-
         ConvDomain convDomain=this.mConvDataMapper.transform(convEntity);
         this.mConvChangeListener.onNext(convDomain);
-        if(completed) this.mConvChangeListener.onComplete();
+        if(completed) onSyncDone();
+    }
+
+    @Override
+    public void onSyncDone() {
+        this.mConvChangeListener.onComplete();
     }
 
     @Override
