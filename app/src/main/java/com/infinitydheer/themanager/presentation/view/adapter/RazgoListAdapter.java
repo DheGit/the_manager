@@ -3,6 +3,8 @@ package com.infinitydheer.themanager.presentation.view.adapter;
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.annotation.NonNull;
+
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +46,7 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
     @Override
     public void onBindViewHolder(@NonNull RazgoHolder holder, int position) {
         final RazgoModel model= mData.get(position);
+        boolean askForMore = (position == 3);
         long id=model.getId();
         boolean self=false;
 
@@ -85,6 +88,7 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
             }
         }
 
+        if(askForMore) listener.onRequestRazgos(this.minId-1);
     }
 
     @Override
@@ -101,7 +105,8 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
 
         razgoModels.addAll(mData);
         mData.clear();
-        mData =razgoModels;
+//        mData =razgoModels;
+        mData.addAll(razgoModels);
 
         notifyDataSetChanged();
     }

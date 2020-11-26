@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.infinitydheer.themanager.R;
 import com.infinitydheer.themanager.data.executor.WorkExecutor;
@@ -171,7 +172,14 @@ public class RazgoListFragment extends BaseFragment implements RazgoListView{
         this.mEntryBox =activity.findViewById(R.id.et_razgo_input);
         this.mSubmitButton =activity.findViewById(R.id.btn_next_razgo);
         this.mRazgoRecycler =activity.findViewById(R.id.rv_razgolist);
-        this.mAdapter =new RazgoListAdapter(activity);
+
+        this.mAdapter = new RazgoListAdapter(activity);
+        this.mAdapter.setListener(new RazgoListAdapter.RazgoListAdapterListener() {
+            @Override
+            public void onRequestRazgos(long end) {
+                Toast.makeText(activity, "Now supposed to load razgos before ID "+end, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         this.mRazgoRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         this.mRazgoRecycler.setAdapter(mAdapter);
