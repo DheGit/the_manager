@@ -56,8 +56,6 @@ public class SyncService extends Service {
 
             @Override
             public void onComplete() {
-//                notifyUser();
-                Log.d("TheManagerLog","SyncService successfully completed the sync tasks, now stopping self.");
                 stopForeground(true);
                 stopSelfResult(startId);
             }
@@ -65,7 +63,6 @@ public class SyncService extends Service {
             @Override
             public void onError(Exception e) {
                 e.printStackTrace();
-                Log.d("TheManagerLog","SyncService failed to complete the sync tasks, now stopping self.");
                 stopForeground(true);
                 stopSelfResult(startId);
             }

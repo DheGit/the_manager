@@ -1,10 +1,6 @@
 package com.infinitydheer.themanager.data.repository.datasource.razgo;
 
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import android.util.Log;
 
 import com.infinitydheer.themanager.data.entity.ConvEntity;
@@ -16,11 +12,7 @@ import com.infinitydheer.themanager.domain.data.RazgoDomain;
 import com.infinitydheer.themanager.domain.listener.ChangeListener;
 import com.infinitydheer.themanager.domain.listener.RazgoListener;
 import com.infinitydheer.themanager.presentation.ApplicationGlobals;
-import com.infinitydheer.themanager.presentation.utils.NotificationUtils;
 import static com.infinitydheer.themanager.domain.constants.S.Constants;
-
-import com.infinitydheer.themanager.R;
-import com.infinitydheer.themanager.presentation.view.activity.MainActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -42,7 +34,6 @@ public class RazgoMainDataStore implements RazgoOnlineDataStore.OnlineMainListen
     private final RazgoOnlineDataStore mOnlineDataStore;
     private final RazgoOfflineDataStore mOfflineDataStore;
 
-    private NotificationUtils mNotificationUtils;//This feels bad coz data should not know about presentation
 
     private RazgoMainDataStore(Context context){
         this.mOnlineDataStore = RazgoOnlineDataStore.getInstance(this);
@@ -50,8 +41,6 @@ public class RazgoMainDataStore implements RazgoOnlineDataStore.OnlineMainListen
 
         this.mConvDataMapper =new ConvEntityDataMapper();
         this.mRazgoDataMapper =new RazgoEntityDataMapper();
-
-//        this.mNotificationUtils=NotificationUtils.getInstance(context);
 
         this.mOnlineDataStore.setParentDS(this);
 
@@ -223,25 +212,6 @@ public class RazgoMainDataStore implements RazgoOnlineDataStore.OnlineMainListen
             }
         });
     }
-
-    private void notifyUser(){
-        Context c=mContext.get();
-        if(c==null) return;
-
-        if(mConvChangeListener!=null||mRazgoChangeListener!=null||mMainChangeListener!=null) return;
-
-        PendingIntent pendingIntent=PendingIntent.getActivity(c,0,
-                new Intent(c, MainActivity.class),
-                PendingIntent.FLAG_CANCEL_CURRENT);
-
-        mNotificationUtils.showNotification(NotificationCompat.PRIORITY_HIGH,
-                Constants.COME_BACK_NOTIFICATION_TITLE,
-                Constants.COME_BACK_NOTIFICATION_TEXT,
-                R.drawable.ic_come_back_notification,
-                NotificationUtils.NOTIF_COME_BACK,
-                pendingIntent,true);
-
-    }//This feels bad coz data should not know about presentation
 
     public void removeUpdateListener(){
         this.mOnlineDataStore.removeUpdateListener();
