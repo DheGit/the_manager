@@ -80,8 +80,9 @@ public class RazgoListFragment extends BaseFragment implements RazgoListView{
 
     @Override
     public void loadRazgos(List<RazgoModel> models) {
+        boolean empty = (mAdapter.getItemCount()==0);
         this.mAdapter.addRazgosToStart(models);
-        this.mRazgoRecycler.scrollToPosition(mAdapter.getItemCount()-1);
+        if(empty) this.mRazgoRecycler.scrollToPosition(mAdapter.getItemCount()-1);
     }
 
     @Override
@@ -174,11 +175,9 @@ public class RazgoListFragment extends BaseFragment implements RazgoListView{
         this.mRazgoRecycler =activity.findViewById(R.id.rv_razgolist);
 
         this.mAdapter = new RazgoListAdapter(activity);
-        this.mAdapter.setListener(new RazgoListAdapter.RazgoListAdapterListener() {
-            @Override
-            public void onRequestRazgos(long end) {
-                Toast.makeText(activity, "Now supposed to load razgos before ID "+end, Toast.LENGTH_SHORT).show();
-            }
+        this.mAdapter.setListener(end->{
+            Toast.makeText(activity, "Loading 100 razgos before "+end, Toast.LENGTH_SHORT).show();
+            RazgoListFragment.this.mPresenter.getRazgos(end);
         });
 
         this.mRazgoRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));

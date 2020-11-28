@@ -191,11 +191,11 @@ public class RazgoMainDataStore implements RazgoOnlineDataStore.OnlineMainListen
 
     public Observable<List<ConvEntity>> getConversations(){
         return Observable.create(emmitter -> {
-            List<ConvEntity> sres=RazgoMainDataStore.this.mOfflineDataStore.getConversations();
-            if(sres!=null){
+            List<ConvEntity> sres = RazgoMainDataStore.this.mOfflineDataStore.getConversations();
+            if (sres != null) {
                 emmitter.onNext(sres);
                 emmitter.onComplete();
-            }else{
+            } else {
                 emmitter.onError(new Exception("The Conversations could not be loaded"));
             }
         });

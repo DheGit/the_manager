@@ -53,6 +53,10 @@ public abstract class UseCase<T, Params> {
         }
     }
 
+    public void clear(){
+        mDisposables.clear();
+    }
+
     private void addDisposable(Disposable disposable){
         if(disposable==null) return;
         mDisposables.add(disposable);

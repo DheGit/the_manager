@@ -1,5 +1,7 @@
 package com.infinitydheer.themanager.presentation.presenter.razgo;
 
+import android.util.Log;
+
 import com.infinitydheer.themanager.domain.data.RazgoDomain;
 import com.infinitydheer.themanager.domain.interactor.DefaultObserver;
 import com.infinitydheer.themanager.domain.interactor.razgo.UCRazgoList;
@@ -69,6 +71,8 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
         RazgoListPresenter.this.hideRetry();
         RazgoListPresenter.this.showProgress();
 
+        Log.d("TheManagerLog","getRazgos attempting to get 100 razgos before "+endid);
+
         this.mInteractor.execute(new RazgoListObserver(), UCRazgoList.Param.forConv(mConvId,endid));
     }
 
@@ -132,6 +136,7 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
     public class RazgoListObserver extends DefaultObserver<List<RazgoDomain>> {
         @Override
         public void onNext(List<RazgoDomain> domains) {
+            Log.d("TheManagerLog","RazgoListObserver received "+domains.size()+" razgos from interactor UCRazgoList, passing it to View");
             RazgoListPresenter.this.loadData(domains);
         }
 
@@ -139,11 +144,14 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
         public void onError(Throwable e) {
             RazgoListPresenter.this.hideProgress();
             RazgoListPresenter.this.showRetry();
+            RazgoListPresenter.this.mInteractor.clear();
+            e.printStackTrace();
         }
 
         @Override
         public void onComplete() {
             RazgoListPresenter.this.hideProgress();
+            RazgoListPresenter.this.mInteractor.clear();
         }
     }
 
