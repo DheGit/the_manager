@@ -100,6 +100,11 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
         this.mData.add(model);
         notifyItemInserted(getItemCount()-1);
     }
+
+    /***
+     * Method to add Razgos to the top of the Razgo list. Does not @link{notifyDataSetChanged()}
+     * @param razgoModels The models to be added to the dataset
+     */
     public void addRazgosToStart(List<RazgoModel> razgoModels){
         this.minId=razgoModels.get(0).getId();
 
@@ -111,7 +116,7 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
 
         Log.d("TheManagerLog","addRazgosToStart adds data to list, final list size: "+mData.size());
 
-        notifyDataSetChanged();
+//        notifyDataSetChanged();
     }
 
     public void setSent(long oldId, long newId){

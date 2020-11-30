@@ -2,6 +2,7 @@ package com.infinitydheer.themanager.presentation.presenter.razgo;
 
 import android.util.Log;
 
+import com.infinitydheer.themanager.domain.data.ConvDomain;
 import com.infinitydheer.themanager.domain.data.RazgoDomain;
 import com.infinitydheer.themanager.domain.interactor.DefaultObserver;
 import com.infinitydheer.themanager.domain.interactor.razgo.UCRazgoList;
@@ -15,6 +16,7 @@ import com.infinitydheer.themanager.presentation.model.mapper.RazgoModelDataMapp
 import com.infinitydheer.themanager.presentation.presenter.DefaultPresenter;
 import com.infinitydheer.themanager.presentation.view.iview.razgo.RazgoListView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -74,6 +76,23 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
         Log.d("TheManagerLog","getRazgos attempting to get 100 razgos before "+endid);
 
         this.mInteractor.execute(new RazgoListObserver(), UCRazgoList.Param.forConv(mConvId,endid));
+    }
+
+    public void getDemoRazgos(long end){
+        List<RazgoDomain> razgoDomains=new ArrayList<>();
+
+        for(int i=1;i<=10;i++){
+                RazgoDomain rd=new RazgoDomain();
+                rd.setContent("Content"+i);
+                rd.setDatetime("datetimeish+"+i);
+                rd.setId(1000+i);
+                rd.setK(12+i);
+                rd.setSender(i%2==0?"dheerS":"sanchiD");
+                rd.setSent(i%2==0);
+                razgoDomains.add(rd);
+        }
+
+        loadData(razgoDomains);
     }
 
     public void addRazgo(RazgoDomain domain, boolean self) {
