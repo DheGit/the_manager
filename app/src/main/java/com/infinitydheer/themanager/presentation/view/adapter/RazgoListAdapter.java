@@ -25,6 +25,10 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
     private List<RazgoModel> mData;
     private String mSelfId;
 
+    boolean test_haltAskForMore=false;
+    long mLastAfmTime=System.nanoTime();
+    double mAfmCooldown=1e9;
+
     private long minId;
 
     private RazgoListAdapterListener listener;
@@ -45,19 +49,20 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
 
     @Override
     public void onBindViewHolder(@NonNull RazgoHolder holder, int position) {
-        final RazgoModel model= mData.get(position);
-        boolean askForMore = (position == 3);
-        long id=model.getId();
-        boolean self=false;
+        final RazgoModel model = mData.get(position);
+        int size = mData.size();
+        boolean askForMore = (position <= 1);
+        long id = model.getId();
+        boolean self = false;
 
-        String prevDate="";
-        if(position!=0) prevDate= mData.get(position-1).getDatetime();
+        String prevDate = "";
+        if (position != 0) prevDate = mData.get(position - 1).getDatetime();
 
-        if(model.getSender().equals(mSelfId)){
-            self=true;
+        if (model.getSender().equals(mSelfId)) {
+            self = true;
             holder.completeLayout.setGravity(Gravity.END);
             holder.razgoBox.setBackgroundResource(R.drawable.razgo_shape_self);
-        }else{
+        } else {
             holder.completeLayout.setGravity(Gravity.START);
             holder.razgoBox.setBackgroundResource(R.drawable.razgo_shape_other);
         }
@@ -65,8 +70,8 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
         holder.razgoStatus_unsent.setVisibility(View.INVISIBLE);
         holder.razgoStatus_sent.setVisibility(View.INVISIBLE);
 
-        if(self){
-            if(model.isSent()) holder.razgoStatus_sent.setVisibility(View.VISIBLE);
+        if (self) {
+            if (model.isSent()) holder.razgoStatus_sent.setVisibility(View.VISIBLE);
             else holder.razgoStatus_unsent.setVisibility(View.VISIBLE);
         }
 
@@ -76,10 +81,10 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
 
         holder.timeBox.setText(model.getDatetime().substring(10)); //Improve this
 
-        if(prevDate.equals("")){
+        if (prevDate.equals("")) {
             holder.dateBubble.setVisibility(View.VISIBLE);
             holder.dateBubble.setText(CalendarUtils.convertToReadableDate(model.getDatetime()));
-        }else {
+        } else {
             if (CalendarUtils.isSameDay(model.getDatetime(), prevDate)) {
                 holder.dateBubble.setVisibility(View.GONE);
             } else {
@@ -88,7 +93,12 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
             }
         }
 
-        if(askForMore) listener.onRequestRazgos(this.minId-1);
+        if (askForMore) {
+            if(Math.abs(System.nanoTime()-mLastAfmTime)>mAfmCooldown) {
+                listener.onRequestRazgos(this.minId - 1);
+                mLastAfmTime=System.nanoTime();
+            }
+        }
     }
 
     @Override

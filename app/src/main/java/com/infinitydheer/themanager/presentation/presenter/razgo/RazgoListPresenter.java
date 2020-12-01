@@ -81,7 +81,7 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
     public void getDemoRazgos(long end){
         List<RazgoDomain> razgoDomains=new ArrayList<>();
 
-        for(int i=1;i<=10;i++){
+        for(int i=1;i<=100;i++){
                 RazgoDomain rd=new RazgoDomain();
                 rd.setContent("Content"+i);
                 rd.setDatetime("datetimeish+"+i);

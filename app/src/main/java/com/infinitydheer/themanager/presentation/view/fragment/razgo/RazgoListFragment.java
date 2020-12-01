@@ -80,10 +80,22 @@ public class RazgoListFragment extends BaseFragment implements RazgoListView{
 
     @Override
     public void loadRazgos(List<RazgoModel> models) {
+        int initSize=mAdapter.getItemCount();
         boolean empty = (mAdapter.getItemCount()==0);
         this.mAdapter.addRazgosToStart(models); //TODO: Reverse the layout and stack from end to avoid such hell
-        mRazgoRecycler.post(() -> RazgoListFragment.this.mAdapter.notifyItemRangeInserted(0,models.size()));
-        if(empty) this.mRazgoRecycler.scrollToPosition(mAdapter.getItemCount()-1);
+
+        if(empty){
+            this.mRazgoRecycler.scrollToPosition(mAdapter.getItemCount()-1);
+//            mAdapter.notifyItemRangeInserted(1,models.size());
+            mAdapter.notifyDataSetChanged();
+        }
+        else mRazgoRecycler.post(() -> {
+            RazgoListFragment.this.mAdapter.notifyDataSetChanged();
+            int curSize=RazgoListFragment.this.mAdapter.getItemCount();
+            RazgoListFragment.this.mRazgoRecycler.scrollToPosition(curSize-initSize);
+            //TODO Handle this more elegantly
+        });
+//        else mRazgoRecycler.post(() -> RazgoListFragment.this.mAdapter.notifyItemRangeInserted(1,models.size()));
     }
 
     @Override
@@ -178,8 +190,8 @@ public class RazgoListFragment extends BaseFragment implements RazgoListView{
         this.mAdapter = new RazgoListAdapter(activity);
         this.mAdapter.setListener(end->{
             Toast.makeText(activity, "Loading demo razgos before "+end, Toast.LENGTH_SHORT).show();
-            RazgoListFragment.this.mPresenter.getDemoRazgos(end);
-//            RazgoListFragment.this.mPresenter.getRazgos(end);
+//            RazgoListFragment.this.mPresenter.getDemoRazgos(end);
+            RazgoListFragment.this.mPresenter.getRazgos(end);
         });
 
         this.mRazgoRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
