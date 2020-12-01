@@ -81,8 +81,8 @@ public class RazgoListFragment extends BaseFragment implements RazgoListView{
     @Override
     public void loadRazgos(List<RazgoModel> models) {
         boolean empty = (mAdapter.getItemCount()==0);
-        this.mAdapter.addRazgosToStart(models);
-        mRazgoRecycler.post(() -> RazgoListFragment.this.mAdapter.notifyDataSetChanged());
+        this.mAdapter.addRazgosToStart(models); //TODO: Reverse the layout and stack from end to avoid such hell
+        mRazgoRecycler.post(() -> RazgoListFragment.this.mAdapter.notifyItemRangeInserted(0,models.size()));
         if(empty) this.mRazgoRecycler.scrollToPosition(mAdapter.getItemCount()-1);
     }
 
