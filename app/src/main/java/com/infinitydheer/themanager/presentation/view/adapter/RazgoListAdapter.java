@@ -3,6 +3,8 @@ package com.infinitydheer.themanager.presentation.view.adapter;
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.annotation.NonNull;
+
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,10 @@ import java.util.List;
 public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.RazgoHolder> {
     private List<RazgoModel> mData;
     private String mSelfId;
+
+    boolean test_haltAskForMore=false;
+    long mLastAfmTime=System.nanoTime();
+    double mAfmCooldown=1e9;
 
     private long minId;
 
@@ -43,18 +49,20 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
 
     @Override
     public void onBindViewHolder(@NonNull RazgoHolder holder, int position) {
-        final RazgoModel model= mData.get(position);
-        long id=model.getId();
-        boolean self=false;
+        final RazgoModel model = mData.get(position);
+        int size = mData.size();
+        boolean askForMore = (position <= 1);
+        long id = model.getId();
+        boolean self = false;
 
-        String prevDate="";
-        if(position!=0) prevDate= mData.get(position-1).getDatetime();
+        String prevDate = "";
+        if (position != 0) prevDate = mData.get(position - 1).getDatetime();
 
-        if(model.getSender().equals(mSelfId)){
-            self=true;
+        if (model.getSender().equals(mSelfId)) {
+            self = true;
             holder.completeLayout.setGravity(Gravity.END);
             holder.razgoBox.setBackgroundResource(R.drawable.razgo_shape_self);
-        }else{
+        } else {
             holder.completeLayout.setGravity(Gravity.START);
             holder.razgoBox.setBackgroundResource(R.drawable.razgo_shape_other);
         }
@@ -62,8 +70,8 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
         holder.razgoStatus_unsent.setVisibility(View.INVISIBLE);
         holder.razgoStatus_sent.setVisibility(View.INVISIBLE);
 
-        if(self){
-            if(model.isSent()) holder.razgoStatus_sent.setVisibility(View.VISIBLE);
+        if (self) {
+            if (model.isSent()) holder.razgoStatus_sent.setVisibility(View.VISIBLE);
             else holder.razgoStatus_unsent.setVisibility(View.VISIBLE);
         }
 
@@ -73,10 +81,10 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
 
         holder.timeBox.setText(model.getDatetime().substring(10)); //Improve this
 
-        if(prevDate.equals("")){
+        if (prevDate.equals("")) {
             holder.dateBubble.setVisibility(View.VISIBLE);
             holder.dateBubble.setText(CalendarUtils.convertToReadableDate(model.getDatetime()));
-        }else {
+        } else {
             if (CalendarUtils.isSameDay(model.getDatetime(), prevDate)) {
                 holder.dateBubble.setVisibility(View.GONE);
             } else {
@@ -85,6 +93,12 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
             }
         }
 
+        if (askForMore) {
+            if(Math.abs(System.nanoTime()-mLastAfmTime)>mAfmCooldown) {
+                listener.onRequestRazgos(this.minId - 1);
+                mLastAfmTime=System.nanoTime();
+            }
+        }
     }
 
     @Override
@@ -96,14 +110,18 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
         this.mData.add(model);
         notifyItemInserted(getItemCount()-1);
     }
+
+    /***
+     * Method to add Razgos to the top of the Razgo list. Does not @link{notifyDataSetChanged()}
+     * @param razgoModels The models to be added to the dataset
+     */
     public void addRazgosToStart(List<RazgoModel> razgoModels){
         this.minId=razgoModels.get(0).getId();
 
+
         razgoModels.addAll(mData);
         mData.clear();
-        mData =razgoModels;
-
-        notifyDataSetChanged();
+        mData.addAll(razgoModels);
     }
 
     public void setSent(long oldId, long newId){

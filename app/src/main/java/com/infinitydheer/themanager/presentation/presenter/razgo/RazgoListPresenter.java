@@ -1,5 +1,8 @@
 package com.infinitydheer.themanager.presentation.presenter.razgo;
 
+import android.util.Log;
+
+import com.infinitydheer.themanager.domain.data.ConvDomain;
 import com.infinitydheer.themanager.domain.data.RazgoDomain;
 import com.infinitydheer.themanager.domain.interactor.DefaultObserver;
 import com.infinitydheer.themanager.domain.interactor.razgo.UCRazgoList;
@@ -13,6 +16,7 @@ import com.infinitydheer.themanager.presentation.model.mapper.RazgoModelDataMapp
 import com.infinitydheer.themanager.presentation.presenter.DefaultPresenter;
 import com.infinitydheer.themanager.presentation.view.iview.razgo.RazgoListView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -23,6 +27,8 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
     private RazgoListView mView;
     private RazgoModelDataMapper mRazgoMapper;
     private UCRazgoList mInteractor;
+
+    private RazgoListObserver mRlObserver;
 
     private long mConvId =-1;
 
@@ -50,7 +56,6 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
     public void onResume() {
         super.onResume();
 
-//        this.mInteractor.setListener(new RazgoListCl());
         this.mInteractor.setMainListener(this);
         if(mConvId !=-1) initialise(mConvId);
     }
@@ -61,6 +66,7 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
         this.mPartnerName =this.mInteractor.getPartnerId(convid);
         mPartnerName = Nkrpt.unprocessDef(mPartnerName);
         mView.setPartnerId(mPartnerName);
+        mRlObserver=new RazgoListObserver();
 
         getRazgos(-1);
     }
@@ -139,11 +145,14 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
         public void onError(Throwable e) {
             RazgoListPresenter.this.hideProgress();
             RazgoListPresenter.this.showRetry();
+            RazgoListPresenter.this.mInteractor.refresh();
+            e.printStackTrace();
         }
 
         @Override
         public void onComplete() {
             RazgoListPresenter.this.hideProgress();
+            RazgoListPresenter.this.mInteractor.refresh();
         }
     }
 

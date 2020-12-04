@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 public abstract class UseCase<T, Params> {
     private final ThreadExecutor mExecutor;
     private final PostExecutionThread mPostExecutionThread;
-    private final CompositeDisposable mDisposables;
+    private CompositeDisposable mDisposables;
 
     public UseCase(ThreadExecutor threadExecutor, PostExecutionThread executionThread){
         this.mExecutor =threadExecutor;
@@ -53,8 +53,15 @@ public abstract class UseCase<T, Params> {
         }
     }
 
+    public void refresh(){
+//        mDisposables.clear();
+        mDisposables=null;
+        mDisposables=new CompositeDisposable();
+    }
+
     private void addDisposable(Disposable disposable){
         if(disposable==null) return;
+        if(mDisposables==null) mDisposables = new CompositeDisposable();
         mDisposables.add(disposable);
     }
 }

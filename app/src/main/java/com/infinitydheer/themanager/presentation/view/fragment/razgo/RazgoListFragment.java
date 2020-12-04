@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.infinitydheer.themanager.R;
 import com.infinitydheer.themanager.data.executor.WorkExecutor;
@@ -79,8 +80,22 @@ public class RazgoListFragment extends BaseFragment implements RazgoListView{
 
     @Override
     public void loadRazgos(List<RazgoModel> models) {
-        this.mAdapter.addRazgosToStart(models);
-        this.mRazgoRecycler.scrollToPosition(mAdapter.getItemCount()-1);
+        int initSize=mAdapter.getItemCount();
+        boolean empty = (mAdapter.getItemCount()==0);
+        this.mAdapter.addRazgosToStart(models); //TODO: Reverse the layout and stack from end to avoid such hell
+
+        if(empty){
+            this.mRazgoRecycler.scrollToPosition(mAdapter.getItemCount()-1);
+//            mAdapter.notifyItemRangeInserted(1,models.size());
+            mAdapter.notifyDataSetChanged();
+        }
+        else mRazgoRecycler.post(() -> {
+            RazgoListFragment.this.mAdapter.notifyDataSetChanged();
+            int curSize=RazgoListFragment.this.mAdapter.getItemCount();
+            RazgoListFragment.this.mRazgoRecycler.scrollToPosition(curSize-initSize);
+            //TODO Handle this more elegantly
+        });
+//        else mRazgoRecycler.post(() -> RazgoListFragment.this.mAdapter.notifyItemRangeInserted(1,models.size()));
     }
 
     @Override
@@ -171,7 +186,11 @@ public class RazgoListFragment extends BaseFragment implements RazgoListView{
         this.mEntryBox =activity.findViewById(R.id.et_razgo_input);
         this.mSubmitButton =activity.findViewById(R.id.btn_next_razgo);
         this.mRazgoRecycler =activity.findViewById(R.id.rv_razgolist);
-        this.mAdapter =new RazgoListAdapter(activity);
+
+        this.mAdapter = new RazgoListAdapter(activity);
+        this.mAdapter.setListener(end->{
+            RazgoListFragment.this.mPresenter.getRazgos(end);
+        });
 
         this.mRazgoRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         this.mRazgoRecycler.setAdapter(mAdapter);
