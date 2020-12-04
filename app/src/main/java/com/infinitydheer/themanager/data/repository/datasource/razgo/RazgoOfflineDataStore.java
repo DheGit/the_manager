@@ -234,7 +234,7 @@ public class RazgoOfflineDataStore {
                     RazgoOne._ID + " DESC", "100");
         } else {
             c = mOfflineDb.query(C_PREFIX + convid,
-                    new String[]{RazgoOne._ID, RazgoOne.COL_CONTENT, RazgoOne.COL_DT, RazgoOne.COL_K},
+                    new String[]{RazgoOne._ID, RazgoOne.COL_CONTENT, RazgoOne.COL_DT, RazgoOne.COL_K, RazgoOne.COL_SENDER},
                     RazgoOne._ID + "<" + endid,
                     null, null, null,
                     RazgoOne._ID + " DESC", "100");

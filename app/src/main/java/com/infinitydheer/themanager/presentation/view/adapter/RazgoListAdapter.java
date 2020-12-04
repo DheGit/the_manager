@@ -121,12 +121,7 @@ public class RazgoListAdapter extends RecyclerView.Adapter<RazgoListAdapter.Razg
 
         razgoModels.addAll(mData);
         mData.clear();
-//        mData =razgoModels;
         mData.addAll(razgoModels);
-
-        Log.d("TheManagerLog","addRazgosToStart adds data to list, final list size: "+mData.size());
-
-//        notifyDataSetChanged();
     }
 
     public void setSent(long oldId, long newId){

@@ -54,8 +54,9 @@ public abstract class UseCase<T, Params> {
     }
 
     public void refresh(){
-        mDisposables.clear();
+//        mDisposables.clear();
         mDisposables=null;
+        mDisposables=new CompositeDisposable();
     }
 
     private void addDisposable(Disposable disposable){

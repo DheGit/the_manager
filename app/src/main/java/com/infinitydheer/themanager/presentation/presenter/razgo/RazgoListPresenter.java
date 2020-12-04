@@ -56,7 +56,6 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
     public void onResume() {
         super.onResume();
 
-//        this.mInteractor.setListener(new RazgoListCl());
         this.mInteractor.setMainListener(this);
         if(mConvId !=-1) initialise(mConvId);
     }
@@ -76,26 +75,7 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
         RazgoListPresenter.this.hideRetry();
         RazgoListPresenter.this.showProgress();
 
-        Log.d("TheManagerLog","getRazgos attempting to get 100 razgos before "+endid+" in convId"+mConvId);
-
-        this.mInteractor.execute(mRlObserver, UCRazgoList.Param.forConv(mConvId,endid));
-    }
-
-    public void getDemoRazgos(long end){
-        List<RazgoDomain> razgoDomains=new ArrayList<>();
-
-        for(int i=1;i<=100;i++){
-                RazgoDomain rd=new RazgoDomain();
-                rd.setContent("Content"+i);
-                rd.setDatetime("datetimeish+"+i);
-                rd.setId(1000+i);
-                rd.setK(12+i);
-                rd.setSender(i%2==0?"dheerS":"sanchiD");
-                rd.setSent(i%2==0);
-                razgoDomains.add(rd);
-        }
-
-        loadData(razgoDomains);
+        this.mInteractor.execute(new RazgoListObserver(), UCRazgoList.Param.forConv(mConvId,endid));
     }
 
     public void addRazgo(RazgoDomain domain, boolean self) {
@@ -158,7 +138,6 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
     public class RazgoListObserver extends DefaultObserver<List<RazgoDomain>> {
         @Override
         public void onNext(List<RazgoDomain> domains) {
-            Log.d("TheManagerLog","RazgoListObserver received "+domains.size()+" razgos from interactor UCRazgoList, passing it to View");
             RazgoListPresenter.this.loadData(domains);
         }
 

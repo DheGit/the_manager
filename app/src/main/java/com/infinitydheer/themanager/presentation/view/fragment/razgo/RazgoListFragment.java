@@ -189,8 +189,6 @@ public class RazgoListFragment extends BaseFragment implements RazgoListView{
 
         this.mAdapter = new RazgoListAdapter(activity);
         this.mAdapter.setListener(end->{
-            Toast.makeText(activity, "Loading demo razgos before "+end, Toast.LENGTH_SHORT).show();
-//            RazgoListFragment.this.mPresenter.getDemoRazgos(end);
             RazgoListFragment.this.mPresenter.getRazgos(end);
         });
 
