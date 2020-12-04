@@ -28,6 +28,8 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
     private RazgoModelDataMapper mRazgoMapper;
     private UCRazgoList mInteractor;
 
+    private RazgoListObserver mRlObserver;
+
     private long mConvId =-1;
 
     private String mPartnerName;
@@ -65,6 +67,7 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
         this.mPartnerName =this.mInteractor.getPartnerId(convid);
         mPartnerName = Nkrpt.unprocessDef(mPartnerName);
         mView.setPartnerId(mPartnerName);
+        mRlObserver=new RazgoListObserver();
 
         getRazgos(-1);
     }
@@ -73,9 +76,9 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
         RazgoListPresenter.this.hideRetry();
         RazgoListPresenter.this.showProgress();
 
-        Log.d("TheManagerLog","getRazgos attempting to get 100 razgos before "+endid);
+        Log.d("TheManagerLog","getRazgos attempting to get 100 razgos before "+endid+" in convId"+mConvId);
 
-        this.mInteractor.execute(new RazgoListObserver(), UCRazgoList.Param.forConv(mConvId,endid));
+        this.mInteractor.execute(mRlObserver, UCRazgoList.Param.forConv(mConvId,endid));
     }
 
     public void getDemoRazgos(long end){
@@ -163,14 +166,14 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
         public void onError(Throwable e) {
             RazgoListPresenter.this.hideProgress();
             RazgoListPresenter.this.showRetry();
-            RazgoListPresenter.this.mInteractor.clear();
+            RazgoListPresenter.this.mInteractor.refresh();
             e.printStackTrace();
         }
 
         @Override
         public void onComplete() {
             RazgoListPresenter.this.hideProgress();
-            RazgoListPresenter.this.mInteractor.clear();
+            RazgoListPresenter.this.mInteractor.refresh();
         }
     }
 
