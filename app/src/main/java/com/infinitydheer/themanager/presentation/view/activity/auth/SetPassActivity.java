@@ -35,6 +35,12 @@ public class SetPassActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        setV();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_edit_task,menu);
         return super.onCreateOptionsMenu(menu);
@@ -82,8 +88,6 @@ public class SetPassActivity extends AppCompatActivity {
         mPinBox1 =findViewById(R.id.et_new_pin1);
         mPinBox2 =findViewById(R.id.et_new_pin2);
         mErrorLabel =findViewById(R.id.tv_error_pin_mismatch);
-
-        setV();
     }
 
     private void setNewPin(){

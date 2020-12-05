@@ -34,6 +34,12 @@ public class AuthenticateUser extends AppCompatActivity {
         initialiseV();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        setV();
+    }
+
     private void checkPin(){
         if(mCorrectPin.equals("")) mCorrectPin = mDataStore.getMainPassword();
 
@@ -60,8 +66,6 @@ public class AuthenticateUser extends AppCompatActivity {
         mSubmitButton =findViewById(R.id.btn_submit_pin);
         mPinBox =findViewById(R.id.et_pin_input);
         mErrorLabel =findViewById(R.id.tv_bad_creds);
-
-        setV();
     }
 
     private void setV(){
