@@ -51,28 +51,18 @@ public class UserListFragment extends BaseFragment implements UserListView {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
+    public void onStart() {
+        super.onStart();
         mPresenter.setView(this);
-        mPresenter.onResume();
+        mPresenter.onStart();
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStop() {
+        super.onStop();
 
         mPresenter.setView(null);
-        mPresenter.onPause();
-    }
-
-    private List<UserModel> getTestList(){
-        List<UserModel> outList=new ArrayList<>();
-        outList.add(new UserModel("User1", "Pass1"));
-        outList.add(new UserModel("User2","Pass2"));
-        outList.add(new UserModel("User3","Pass3"));
-        outList.add(new UserModel("User4", "Pass4"));
-        return outList;
+        mPresenter.onStop();
     }
 
     private void initialiseV(){

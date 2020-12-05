@@ -8,6 +8,7 @@ import com.infinitydheer.themanager.presentation.model.mapper.UserModelDataMappe
 import com.infinitydheer.themanager.presentation.presenter.DefaultPresenter;
 import com.infinitydheer.themanager.presentation.view.iview.master.UserListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserListPresenter extends DefaultPresenter {
@@ -21,11 +22,17 @@ public class UserListPresenter extends DefaultPresenter {
         dataMapper=new UserModelDataMapper();
     }
 
-    public void onResume(){
+    @Override
+    public void onStart() {
+        super.onStart();
         getUsers();
     }
 
-    public void onPause(){}
+    @Override
+    public void onStop() {
+        super.onStop();
+        mView.populateList(new ArrayList<>());
+    }
 
     public void getUsers(){
         hideRetry();
