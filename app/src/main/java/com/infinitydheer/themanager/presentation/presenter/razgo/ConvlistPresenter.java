@@ -10,6 +10,7 @@ import com.infinitydheer.themanager.presentation.model.mapper.ConvModelDataMappe
 import com.infinitydheer.themanager.presentation.presenter.DefaultPresenter;
 import com.infinitydheer.themanager.presentation.view.iview.razgo.ConvlistView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,12 +27,6 @@ public class ConvlistPresenter extends DefaultPresenter {
     }
 
     @Override
-    public void onDestroy() {
-        this.mView =null;
-        this.mInteractor.dispose();
-    }
-
-    @Override
     public void onStart() {
         super.onStart();
 
@@ -42,6 +37,10 @@ public class ConvlistPresenter extends DefaultPresenter {
     public void onStop() {
         super.onStop();
         this.mInteractor.setListener(null);
+        this.loadData(new ArrayList<>());
+
+        this.mInteractor.dispose();
+        this.mInteractor.refresh();
     }
 
     /**

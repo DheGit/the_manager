@@ -35,6 +35,7 @@ public class RazgoActivityMain extends BaseActivity implements
         setContentView(R.layout.activity_razgo);
 
         initialiseV();
+        initialiseD();
 
         start();
     }
