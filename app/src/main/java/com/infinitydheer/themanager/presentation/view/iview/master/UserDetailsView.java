@@ -8,4 +8,6 @@ public interface UserDetailsView extends LoadDataView{
     void onNewConversationReceived(ConvModel convModel);
     void onAccessAllowed(boolean allowed);
     void showMessage(String message);
+
+    void resetConvList();
 }

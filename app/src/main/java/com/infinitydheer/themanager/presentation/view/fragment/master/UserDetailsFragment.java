@@ -28,6 +28,8 @@ import com.infinitydheer.themanager.presentation.view.iview.master.UserDetailsVi
 
 import com.infinitydheer.themanager.R;
 
+import java.util.ArrayList;
+
 public class UserDetailsFragment extends BaseFragment implements UserDetailsView {
     private static final String BUNDLE_USERNAME = "man_bundle_user_key";
     private static final String BUNDLE_PASS = "man_bundle_user_pass";
@@ -64,24 +66,37 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
 
         renderViews();
 
         mPresenter.setView(this);
         mPresenter.setUserId(getUserModel().getUserId());
-        mPresenter.onResume();
-//        renderTestConvList();
+        mPresenter.onStart();
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStop() {
+        super.onStop();
 
-        mPresenter.onPause();
+        mPresenter.onStop();
         mPresenter.setView(null);
     }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+////        renderTestConvList();
+//    }
+
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//
+//        mPresenter.onPause();
+//        mPresenter.setView(null);
+//    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -142,6 +157,12 @@ public class UserDetailsFragment extends BaseFragment implements UserDetailsView
     public void onAccessAllowed(boolean allowed) {
         mIsAccessAllowed = allowed;
         setAccessOptionTextView();
+    }
+
+    @Override
+    public void resetConvList() {
+        this.mAdapter.setData(new ArrayList<>());
+        mAdapter.notifyDataSetChanged();
     }
 
     public void setAccessOptionTextView() {

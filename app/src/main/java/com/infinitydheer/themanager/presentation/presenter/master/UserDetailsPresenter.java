@@ -20,16 +20,31 @@ public class UserDetailsPresenter extends DefaultPresenter {
         mInteractor=interactor;
         mDataMapper=new ConvModelDataMapper();
     }
+//    @Override
+//    public void onResume(){
+//        if(mUserId!=null&&mUserId.length()!=0){
+//            getConvList(mUserId);
+//            getUserAccessStatus();
+//        }
+//    }
+//    @Override
+//    public void onPause(){}
+
 
     @Override
-    public void onResume(){
+    public void onStart() {
+        super.onStart();
         if(mUserId!=null&&mUserId.length()!=0){
             getConvList(mUserId);
             getUserAccessStatus();
         }
     }
+
     @Override
-    public void onPause(){}
+    public void onStop() {
+        super.onStop();
+        mView.resetConvList();
+    }
 
     public void getConvList(String userId){
         showProgress();
