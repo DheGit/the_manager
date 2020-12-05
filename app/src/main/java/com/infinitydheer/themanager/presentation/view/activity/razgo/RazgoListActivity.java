@@ -69,10 +69,7 @@ public class RazgoListActivity extends BaseActivity implements RazgoListFragment
     private void initialiseV(){
         Toolbar toolbar=findViewById(R.id.tb_razgo_list);
         setSupportActionBar(toolbar);
-        setV();
-    }
 
-    private void setV(){
         this.mActionBar =getSupportActionBar();
         if(this.mActionBar !=null){
             mActionBar.setDisplayHomeAsUpEnabled(true);

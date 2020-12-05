@@ -113,22 +113,20 @@ public class RazgoListFragment extends BaseFragment implements RazgoListView{
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        this.mPresenter.onDestroy();
-    }
+    public void onStart() {
+        super.onStart();
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        this.mPresenter.onPause();
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-
+        this.mPresenter.setView(this);
         this.mPresenter.setConvid(getConvId());
-        this.mPresenter.onResume();
+        this.mPresenter.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        this.mPresenter.setView(null);
+        this.mPresenter.onStop();
     }
 
     @Override

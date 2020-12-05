@@ -40,24 +40,20 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        this.mView = null;
-
-        this.mInteractor.dispose();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        this.mInteractor.setListener(null);
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
 
         this.mInteractor.setMainListener(this);
         if(mConvId !=-1) initialise(mConvId);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        this.mInteractor.setListener(null);
+
+        this.mInteractor.dispose();
+        this.mInteractor.refresh();
     }
 
     public void initialise(long convid) {
