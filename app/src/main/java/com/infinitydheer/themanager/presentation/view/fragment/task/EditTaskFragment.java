@@ -55,21 +55,19 @@ public class EditTaskFragment extends BaseFragment implements EditTaskView {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mPresenter.onDestroy();
+    public void onStop() {
+        super.onStop();
+        this.mPresenter.onStop();
+        this.mPresenter.setView(null);
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        mPresenter.onResume();
-    }
+    public void onStart() {
+        super.onStart();
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        mPresenter.onPause();
+        this.mPresenter.setView(this);
+        this.mPresenter.initialise(getTaskID());
+        this.mPresenter.onStart();
     }
 
     @Override
@@ -80,7 +78,6 @@ public class EditTaskFragment extends BaseFragment implements EditTaskView {
         initialiseD();
 
         this.mPresenter.setView(this);
-        this.mPresenter.initialise(getTaskID());
     }
 
     @Override

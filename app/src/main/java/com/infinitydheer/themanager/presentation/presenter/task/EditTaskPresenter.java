@@ -19,9 +19,19 @@ public class EditTaskPresenter extends DefaultPresenter {
     }
 
     @Override
-    public void onDestroy() {
-        this.mView =null;
+    public void onStop() {
+        super.onStop();
+
+        showEmptyTask();
         this.mInteractor.dispose();
+        this.mInteractor.refresh();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        //Start something, which should be there when the screen shows up
     }
 
     public void initialise(long id){
@@ -32,6 +42,16 @@ public class EditTaskPresenter extends DefaultPresenter {
         }
     }
 
+    private void showEmptyTask(){
+        TaskDomain domain=new TaskDomain();
+        domain.setDone(0);
+        domain.setDueDate("");
+        domain.setId(0L);
+        domain.setName("Task");
+        domain.setQuad(4);
+        domain.setNote("Note");
+        showTask(domain);
+    }
     private void showTask(TaskDomain domain){
         TaskModel model= mTaskMapper.transformToModel(domain);
         this.mView.renderTask(model);
