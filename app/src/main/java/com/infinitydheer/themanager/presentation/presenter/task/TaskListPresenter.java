@@ -8,6 +8,7 @@ import com.infinitydheer.themanager.presentation.model.mapper.TaskModelDataMappe
 import com.infinitydheer.themanager.presentation.presenter.DefaultPresenter;
 import com.infinitydheer.themanager.presentation.view.iview.task.TaskListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskListPresenter extends DefaultPresenter {
@@ -23,14 +24,29 @@ public class TaskListPresenter extends DefaultPresenter {
         this.quad=1;
     }
 
+//    @Override
+//    public void onDestroy() {
+//        this.mInteractor.dispose();
+//    }
+//    @Override
+//    public void onResume() {
+//        initialise(quad);
+//    }
+
     @Override
-    public void onDestroy() {
-        this.mView =null;
-        this.mInteractor.dispose();
-    }
-    @Override
-    public void onResume() {
+    public void onStart() {
+        super.onStart();
         initialise(quad);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        loadData(new ArrayList<>());
+        mView.showNullTasks();
+        this.mInteractor.dispose();
+        this.mInteractor.refresh();
     }
 
     public void initialise(int quad){

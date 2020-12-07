@@ -30,7 +30,6 @@ public class ConvlistPresenter extends DefaultPresenter {
     public void onStart() {
         super.onStart();
 
-        this.mInteractor.setListener(new ConvListCl());
         this.initialise();
     }
     @Override

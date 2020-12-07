@@ -50,7 +50,8 @@ public class RazgoListPresenter extends DefaultPresenter implements RazgoListene
     @Override
     public void onStop() {
         super.onStop();
-        this.mInteractor.setListener(null);
+        this.mInteractor.setListener(null); //TODO: Remove this, as it is not required
+        this.mInteractor.setMainListener(null);
 
         this.mInteractor.dispose();
         this.mInteractor.refresh();
