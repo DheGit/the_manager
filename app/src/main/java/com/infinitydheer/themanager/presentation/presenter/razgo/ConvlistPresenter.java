@@ -36,8 +36,8 @@ public class ConvlistPresenter extends DefaultPresenter {
     @Override
     public void onStop() {
         super.onStop();
-        this.mInteractor.setListener(null);
         this.loadData(new ArrayList<>());
+        this.mInteractor.setListener(null);
 
         this.mInteractor.dispose();
         this.mInteractor.refresh();

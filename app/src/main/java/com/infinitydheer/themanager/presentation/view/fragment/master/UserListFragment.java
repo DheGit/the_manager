@@ -61,8 +61,8 @@ public class UserListFragment extends BaseFragment implements UserListView {
     public void onStop() {
         super.onStop();
 
-        mPresenter.setView(null);
         mPresenter.onStop();
+        mPresenter.setView(null);
     }
 
     private void initialiseV(){

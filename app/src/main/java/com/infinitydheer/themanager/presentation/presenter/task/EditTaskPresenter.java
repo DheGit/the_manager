@@ -22,7 +22,6 @@ public class EditTaskPresenter extends DefaultPresenter {
     public void onStop() {
         super.onStop();
 
-        showEmptyTask();
         this.mInteractor.dispose();
         this.mInteractor.refresh();
     }
@@ -42,16 +41,6 @@ public class EditTaskPresenter extends DefaultPresenter {
         }
     }
 
-    private void showEmptyTask(){
-        TaskDomain domain=new TaskDomain();
-        domain.setDone(0);
-        domain.setDueDate("");
-        domain.setId(0L);
-        domain.setName("Task");
-        domain.setQuad(4);
-        domain.setNote("Note");
-        showTask(domain);
-    }
     private void showTask(TaskDomain domain){
         TaskModel model= mTaskMapper.transformToModel(domain);
         this.mView.renderTask(model);
