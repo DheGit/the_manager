@@ -7,12 +7,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.infinitydheer.themanager.R;
 import com.infinitydheer.themanager.domain.constants.S;
 import com.infinitydheer.themanager.presentation.view.activity.BaseActivity;
+import com.infinitydheer.themanager.presentation.view.fragment.task.TaskDetailsFragment;
 import com.infinitydheer.themanager.presentation.view.fragment.task.TaskListFragment;
 
 public class TaskListActivity extends BaseActivity implements TaskListFragment.TaskListFragmentListener {
@@ -29,7 +32,8 @@ public class TaskListActivity extends BaseActivity implements TaskListFragment.T
         initialise();
         initialiseV();
 
-        addFragment(R.id.fl_tasklist, TaskListFragment.forQuadrant(mQuad));
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if(fragmentManager.findFragmentById(R.id.fl_tasklist) == null) addFragment(R.id.fl_tasklist, TaskListFragment.forQuadrant(mQuad));
     }
 
     @Override

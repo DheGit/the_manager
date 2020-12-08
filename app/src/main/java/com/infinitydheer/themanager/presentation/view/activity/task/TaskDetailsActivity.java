@@ -5,6 +5,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -45,7 +47,8 @@ public class TaskDetailsActivity extends BaseActivity {
 
         initialise();
 
-        addFragment(R.id.fl_taskdetails,TaskDetailsFragment.forTask(this.mId));
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if(fragmentManager.findFragmentById(R.id.fl_taskdetails) == null) addFragment(R.id.fl_taskdetails,TaskDetailsFragment.forTask(this.mId));
     }
 
     private void initialise(){

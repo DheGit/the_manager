@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+
 import android.view.MenuItem;
 
 import com.infinitydheer.themanager.R;
 import com.infinitydheer.themanager.presentation.view.activity.BaseActivity;
 import com.infinitydheer.themanager.presentation.view.fragment.master.UserListFragment;
+import com.infinitydheer.themanager.presentation.view.fragment.task.TaskDetailsFragment;
 
 public class UserListActivity extends BaseActivity {
     private Toolbar mToolBar;
@@ -20,7 +23,8 @@ public class UserListActivity extends BaseActivity {
 
         initialiseV();
 
-        addFragment(R.id.fl_user_list,new UserListFragment());
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if(fragmentManager.findFragmentById(R.id.fl_user_list) == null) addFragment(R.id.fl_user_list,new UserListFragment());
     }
 
     private void initialiseV(){

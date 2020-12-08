@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,6 +16,7 @@ import com.infinitydheer.themanager.R;
 import com.infinitydheer.themanager.domain.constants.S;
 import com.infinitydheer.themanager.presentation.view.activity.BaseActivity;
 import com.infinitydheer.themanager.presentation.view.fragment.task.EditTaskFragment;
+import com.infinitydheer.themanager.presentation.view.fragment.task.TaskDetailsFragment;
 
 public class EditTaskActivity extends BaseActivity {
     private long mId;
@@ -28,7 +31,8 @@ public class EditTaskActivity extends BaseActivity {
 
         initialise();
 
-        addFragment(R.id.fl_edit_task, EditTaskFragment.forTask(mId, mQuad));
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if(fragmentManager.findFragmentById(R.id.fl_edit_task) == null) addFragment(R.id.fl_edit_task, EditTaskFragment.forTask(mId, mQuad));
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.infinitydheer.themanager.presentation.view.activity.master;
 import android.content.Intent;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import com.infinitydheer.themanager.domain.constants.S.*;
 import com.infinitydheer.themanager.presentation.model.UserModel;
 import com.infinitydheer.themanager.presentation.view.activity.BaseActivity;
 import com.infinitydheer.themanager.presentation.view.fragment.master.UserDetailsFragment;
+import com.infinitydheer.themanager.presentation.view.fragment.task.TaskDetailsFragment;
 
 public class UserDetailsActivity extends BaseActivity {
     private Toolbar mToolBar;
@@ -25,7 +27,8 @@ public class UserDetailsActivity extends BaseActivity {
         initialiseD();
         initialiseV();
 
-        addFragment(R.id.fl_user_details, UserDetailsFragment.forUser(mModelShown));
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if(fragmentManager.findFragmentById(R.id.fl_user_details) == null) addFragment(R.id.fl_user_details, UserDetailsFragment.forUser(mModelShown));
     }
 
     public void initialiseD(){
