@@ -91,7 +91,8 @@ public class TaskListFragment extends BaseFragment implements TaskListView {
         initialiseD();
 
         mPresenter.setView(this);
-        mPresenter.initialise(getQuadrant());
+        mPresenter.setQuad(getQuadrant());
+//        mPresenter.initialise(getQuadrant());
     }
 
     private void initialiseD() {

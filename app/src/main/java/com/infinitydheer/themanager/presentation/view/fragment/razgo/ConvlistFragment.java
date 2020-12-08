@@ -59,8 +59,8 @@ public class ConvlistFragment extends BaseFragment implements ConvlistView {
     @Override
     public void onStop() {
         super.onStop();
-        this.mPresenter.setView(null);
         this.mPresenter.onStop();
+        this.mPresenter.setView(null);
     }
     @Override
     public void onStart() {

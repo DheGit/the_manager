@@ -1,5 +1,7 @@
 package com.infinitydheer.themanager.presentation.presenter.task;
 
+import android.util.Log;
+
 import com.infinitydheer.themanager.domain.data.TaskDomain;
 import com.infinitydheer.themanager.domain.interactor.DefaultObserver;
 import com.infinitydheer.themanager.domain.interactor.task.UCTaskList;
@@ -35,16 +37,17 @@ public class TaskListPresenter extends DefaultPresenter {
 
     @Override
     public void onStart() {
+        Log.d("TheManagerLog", "TaskListPresenterOnStart called");
         super.onStart();
         initialise(quad);
     }
 
     @Override
     public void onStop() {
+        Log.d("TheManagerLog", "TaskListPresented OnStop called");
         super.onStop();
 
-        loadData(new ArrayList<>());
-        mView.showNullTasks();
+//        loadData(new ArrayList<>());
         this.mInteractor.dispose();
         this.mInteractor.refresh();
     }
@@ -77,13 +80,19 @@ public class TaskListPresenter extends DefaultPresenter {
     }
 
     private void showProgress(){
-        mView.showProgress();}
+        mView.showProgress();
+    }
     private void hideProgress(){
-        mView.hideProgress();}
+        mView.hideProgress();
+    }
     private void hideRetry(){
         mView.hideRetry();}
     private void showRetry(){
         mView.showRetry();}
+
+    public void setQuad(int squad){
+        this.quad=squad;
+    }
 
     private final class TaskListObserver extends DefaultObserver<List<TaskDomain>>{
 
@@ -96,11 +105,17 @@ public class TaskListPresenter extends DefaultPresenter {
         public void onError(Throwable e) {
             TaskListPresenter.this.hideProgress();
             TaskListPresenter.this.showRetry();
+
+            TaskListPresenter.this.mInteractor.dispose();
+            TaskListPresenter.this.mInteractor.refresh();
         }
 
         @Override
         public void onComplete() {
             TaskListPresenter.this.hideProgress();
+
+            TaskListPresenter.this.mInteractor.dispose();
+            TaskListPresenter.this.mInteractor.refresh();
         }
 
     }
