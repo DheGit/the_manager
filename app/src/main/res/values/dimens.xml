@@ -11,6 +11,7 @@
     <dimen name="text_size_8">70sp</dimen>
 
     <!--All DPs-->
+    <dimen name="space_xsmall">2dp</dimen>
     <dimen name="space_small">4dp</dimen>
     <dimen name="space_normal">8dp</dimen>
     <dimen name="space_medium">12dp</dimen>

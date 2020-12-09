@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_taskoverviewframe"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_weight="1"
+        android:baselineAligned="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/rl_quadrant_1"
             android:layout_weight="1"
+            android:layout_marginTop="@dimen/space_small"
+            android:layout_marginLeft="@dimen/space_small"
+            android:layout_marginStart="@dimen/space_small"
+            android:layout_marginRight="@dimen/space_xsmall"
+            android:layout_marginEnd="@dimen/space_xsmall"
+            android:layout_marginBottom="@dimen/space_xsmall"
+            android:padding="@dimen/space_big"
             android:background="@color/colorOne"
             android:layout_width="0dp"
             android:layout_height="match_parent">
@@ -30,15 +39,18 @@
             <RelativeLayout
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true">
 
                 <TextView
                     android:id="@+id/tv_quadrant_1_num"
-                    android:textSize="@dimen/text_size_8"
-                    android:textColor="@color/colorBlack"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_8"
+                    tools:text="0" />
 
                 <TextView
                     android:layout_below="@id/tv_quadrant_1_num"
@@ -54,6 +66,13 @@
             android:id="@+id/rl_quadrant_2"
             android:layout_weight="1"
             android:background="@color/colorTwo"
+            android:layout_marginTop="@dimen/space_small"
+            android:layout_marginLeft="@dimen/space_xsmall"
+            android:layout_marginStart="@dimen/space_xsmall"
+            android:layout_marginRight="@dimen/space_small"
+            android:layout_marginEnd="@dimen/space_small"
+            android:layout_marginBottom="@dimen/space_xsmall"
+            android:padding="@dimen/space_big"
             android:layout_width="0dp"
             android:layout_height="match_parent">
 
@@ -68,6 +87,8 @@
 
             <RelativeLayout
                 android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -94,6 +115,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_weight="1"
+        android:baselineAligned="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -101,6 +123,13 @@
             android:id="@+id/rl_quadrant_3"
             android:layout_weight="1"
             android:background="@color/colorThree"
+            android:layout_marginTop="@dimen/space_xsmall"
+            android:layout_marginLeft="@dimen/space_small"
+            android:layout_marginStart="@dimen/space_small"
+            android:layout_marginRight="@dimen/space_xsmall"
+            android:layout_marginEnd="@dimen/space_xsmall"
+            android:layout_marginBottom="@dimen/space_small"
+            android:padding="@dimen/space_big"
             android:layout_width="0dp"
             android:layout_height="match_parent">
 
@@ -115,6 +144,8 @@
 
             <RelativeLayout
                 android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -141,6 +172,13 @@
             android:id="@+id/rl_quadrant_4"
             android:background="@color/colorFour"
             android:layout_weight="1"
+            android:layout_marginTop="@dimen/space_xsmall"
+            android:layout_marginLeft="@dimen/space_xsmall"
+            android:layout_marginStart="@dimen/space_xsmall"
+            android:layout_marginRight="@dimen/space_small"
+            android:layout_marginEnd="@dimen/space_small"
+            android:layout_marginBottom="@dimen/space_small"
+            android:padding="@dimen/space_big"
             android:layout_width="0dp"
             android:layout_height="match_parent">
 
@@ -155,6 +193,8 @@
 
             <RelativeLayout
                 android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
