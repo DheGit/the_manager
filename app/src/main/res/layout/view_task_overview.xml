@@ -3,7 +3,7 @@
     android:id="@+id/ll_taskoverviewframe"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@color/colorDistinct"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -23,7 +23,7 @@
             android:layout_marginEnd="@dimen/space_xsmall"
             android:layout_marginBottom="@dimen/space_xsmall"
             android:padding="@dimen/space_big"
-            android:background="@color/colorOne"
+            android:background="@drawable/quad_1_ovbg"
             android:layout_width="0dp"
             android:layout_height="match_parent">
 
@@ -65,7 +65,7 @@
         <RelativeLayout
             android:id="@+id/rl_quadrant_2"
             android:layout_weight="1"
-            android:background="@color/colorTwo"
+            android:background="@drawable/quad_2_ovbg"
             android:layout_marginTop="@dimen/space_small"
             android:layout_marginLeft="@dimen/space_xsmall"
             android:layout_marginStart="@dimen/space_xsmall"
@@ -122,7 +122,7 @@
         <RelativeLayout
             android:id="@+id/rl_quadrant_3"
             android:layout_weight="1"
-            android:background="@color/colorThree"
+            android:background="@drawable/quad_3_ovbg"
             android:layout_marginTop="@dimen/space_xsmall"
             android:layout_marginLeft="@dimen/space_small"
             android:layout_marginStart="@dimen/space_small"
@@ -170,7 +170,7 @@
 
         <RelativeLayout
             android:id="@+id/rl_quadrant_4"
-            android:background="@color/colorFour"
+            android:background="@drawable/quad_4_ovbg"
             android:layout_weight="1"
             android:layout_marginTop="@dimen/space_xsmall"
             android:layout_marginLeft="@dimen/space_xsmall"
