@@ -27,4 +27,5 @@
     <dimen name="corner_radius_1">6dp</dimen>
     <dimen name="corner_radius_2">9dp</dimen>
     <dimen name="razgo_status_icon_width">16dp</dimen>
+    <dimen name="razgosender_height">48dp</dimen>
 </resources>
