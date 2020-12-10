@@ -17,7 +17,7 @@
         android:paddingLeft="@dimen/space_medium"
         android:paddingTop="@dimen/space_small"
         android:paddingBottom="@dimen/space_small"
-        android:background="@color/white"
+        android:background="@color/black"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:minHeight="@dimen/razgosender_height"
@@ -38,7 +38,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:background="@color/colorDistinct"
+                android:background="@drawable/rounded_bg_high"
                 android:hint="@string/enter_message_hint"
                 android:inputType="textAutoCorrect|textMultiLine|textCapSentences"
                 android:maxLines="5"
@@ -49,12 +49,13 @@
                 android:paddingEnd="@dimen/space_medium"
                 android:minHeight="@dimen/razgosender_height"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no" />
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="@dimen/space_huge"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/razgosender_height"
+            android:layout_height="@dimen/razgosender_height"
             android:background="@drawable/rounded_button"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
@@ -62,10 +63,9 @@
             android:id="@+id/rl_send_button">
             <Button
                 android:id="@+id/btn_next_razgo"
-                android:background="@drawable/ic_push_black_24dp"
+                android:background="@drawable/ic_push_white_24dp"
                 android:layout_margin="@dimen/space_small"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
                 android:layout_width="@dimen/space_huge"
                 android:layout_height="@dimen/space_huge"/>
         </RelativeLayout>
