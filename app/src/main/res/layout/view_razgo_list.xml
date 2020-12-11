@@ -24,6 +24,7 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:id="@+id/rl_razgo_input_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/rl_send_button"
@@ -43,10 +44,8 @@
                 android:inputType="textAutoCorrect|textMultiLine|textCapSentences"
                 android:maxLines="5"
                 android:scrollbars="vertical"
-                android:paddingLeft="@dimen/space_medium"
-                android:paddingStart="@dimen/space_medium"
-                android:paddingRight="@dimen/space_medium"
-                android:paddingEnd="@dimen/space_medium"
+                android:paddingVertical="@dimen/space_normal"
+                android:paddingHorizontal="@dimen/space_medium"
                 android:minHeight="@dimen/razgosender_height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +58,7 @@
             android:background="@drawable/rounded_button"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_alignBottom="@id/rl_razgo_input_box"
             android:id="@+id/rl_send_button">
             <Button
                 android:id="@+id/btn_next_razgo"
