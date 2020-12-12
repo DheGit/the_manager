@@ -14,7 +14,7 @@
 
     <color name="colorBlack">#000000</color>
     <color name="colorDistinct">#E1E1E1</color>
-    <color name="colorDistinct_dark">#CCE1E1E1</color>
+    <color name="colorDistinct_dark">#C5C5C5</color>
 
     <color name="colorSelf">#a5be88</color>
     <color name="colorOther">#e9c692</color>
