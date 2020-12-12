@@ -13,7 +13,8 @@
     <color name="colorTaskTb">#E2DEDE</color>
 
     <color name="colorBlack">#000000</color>
-    <color name="colorDistinct">#e1e1e1</color>
+    <color name="colorDistinct">#E1E1E1</color>
+    <color name="colorDistinct_dark">#CCE1E1E1</color>
 
     <color name="colorSelf">#a5be88</color>
     <color name="colorOther">#e9c692</color>
