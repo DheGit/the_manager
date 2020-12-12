@@ -2,8 +2,8 @@
     <string name="app_name">TheManager</string>
 
     <!--General Screens-->
-    <string name="task_manager">Task Manager</string>
-    <string name="log_manager">Logger</string>
+    <string name="task_manager">Tasks</string>
+    <string name="log_manager">Logs</string>
     <string name="settings_text">Settings</string>
 
 

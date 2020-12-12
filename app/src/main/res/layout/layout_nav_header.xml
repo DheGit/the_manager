@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="192dp"
+    android:layout_height="@dimen/space_gigantic"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:background="@color/colorPrimaryDark"
-    android:gravity="bottom">
+    android:background="@color/white">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"/>
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size_4"
+        android:paddingHorizontal="@dimen/space_medium"
+        android:layout_centerVertical="true"/>
 
-</LinearLayout>
+</RelativeLayout>
