@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity {
 
         initialiseV();
 
-        addFragment(R.id.fl_main, new TaskOverviewFragment());
+        if(getFragmentManager().findFragmentById(R.id.fl_main)==null) addFragment(R.id.fl_main, new TaskOverviewFragment());
     }
 
     @Override

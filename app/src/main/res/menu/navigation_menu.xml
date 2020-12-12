@@ -2,9 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_task_manager"
+        android:icon="@drawable/ic_baseline_tasks_24"
         android:title="@string/task_manager" />
     <item
         android:id="@+id/nav_log_manager"
+        android:icon="@drawable/ic_baseline_diary_24"
         android:title="@string/log_manager"/>
     <item
         android:id="@+id/nav_settings"
