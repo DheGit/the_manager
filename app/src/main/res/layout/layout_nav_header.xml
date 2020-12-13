@@ -3,7 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="@dimen/space_gigantic"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:background="@color/white">
+    android:elevation="@dimen/space_small"
+    android:background="@color/colorWhite">
 
     <TextView
         android:layout_width="wrap_content"

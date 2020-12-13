@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:itemBackground="@drawable/selectable_navitem_bg"
+        android:fitsSystemWindows="false"
         app:headerLayout="@layout/layout_nav_header"
         app:menu="@menu/navigation_menu"/>
 

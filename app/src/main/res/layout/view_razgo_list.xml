@@ -18,7 +18,7 @@
         android:paddingLeft="@dimen/space_medium"
         android:paddingTop="@dimen/space_small"
         android:paddingBottom="@dimen/space_normal"
-        android:background="00000000"
+        android:background="@color/transparent"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:minHeight="@dimen/razgosender_height"
