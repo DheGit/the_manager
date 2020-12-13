@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/colorDistinct_dark">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_razgolist"
@@ -16,34 +17,58 @@
         android:paddingStart="@dimen/space_medium"
         android:paddingLeft="@dimen/space_medium"
         android:paddingTop="@dimen/space_small"
-        android:paddingBottom="@dimen/space_small"
-        android:background="@color/colorDistinct"
+        android:paddingBottom="@dimen/space_normal"
+        android:background="@color/transparent"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
+        android:minHeight="@dimen/razgosender_height"
         android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/et_razgo_input"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:hint="@string/enter_message_hint"
-            android:inputType="textAutoCorrect|textMultiLine|textCapSentences"
-            android:maxLines="5"
-            android:scrollbars="vertical"
-            android:layout_toLeftOf="@id/btn_next_razgo"
-            android:layout_toStartOf="@id/btn_next_razgo"
+        <RelativeLayout
+            android:id="@+id/rl_razgo_input_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/rl_send_button"
+            android:layout_toStartOf="@id/rl_send_button"
             android:layout_marginEnd="@dimen/space_medium"
             android:layout_marginRight="@dimen/space_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true">
+            <EditText
+                android:id="@+id/et_razgo_input"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/rounded_bg_high"
+                android:hint="@string/enter_message_hint"
+                android:inputType="textAutoCorrect|textMultiLine|textCapSentences"
+                android:maxLines="5"
+                android:scrollbars="vertical"
+                android:paddingVertical="@dimen/space_normal"
+                android:paddingHorizontal="@dimen/space_medium"
+                android:minHeight="@dimen/razgosender_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no" />
+        </RelativeLayout>
 
-        <Button
-            android:id="@+id/btn_next_razgo"
-            android:background="@drawable/ic_push_black_24dp"
+        <RelativeLayout
+            android:layout_width="@dimen/razgosender_height"
+            android:layout_height="@dimen/razgosender_height"
+            android:background="@drawable/rounded_button"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_width="@dimen/space_gigantic"
-            android:layout_height="wrap_content"/>
+            android:layout_alignBottom="@id/rl_razgo_input_box"
+            android:id="@+id/rl_send_button">
+            <Button
+                android:id="@+id/btn_next_razgo"
+                android:background="@drawable/ic_push_white_24dp"
+                android:layout_margin="@dimen/space_small"
+                android:layout_centerInParent="true"
+                android:layout_width="@dimen/space_huge"
+                android:layout_height="@dimen/space_huge"/>
+        </RelativeLayout>
     </RelativeLayout>
 
     <include
